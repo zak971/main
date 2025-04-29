@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 
 import { Navbar } from "@/components/navbar"
+import { MobileNav } from "@/components/mobile-nav"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -11,11 +12,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Goa Car Rentals - Premium Car Rental Service in Goa",
-  description:
-    "Rent premium cars in Goa at affordable prices. Explore Goa in style with our well-maintained fleet. Book online or via WhatsApp for the best car rental experience.",
-  keywords: "car rental goa, rent car goa, goa car hire, luxury car rental goa, affordable car rental goa",
-    generator: 'v0.dev'
+  title: "Goa Car Rentals - Premium Car Rental Services in Goa",
+  description: "Experience the best car rental services in Goa with our premium fleet of vehicles. Book your dream car today!",
 }
 
 export default function RootLayout({
@@ -28,11 +26,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
         >
           <Navbar />
+          <MobileNav />
           {children}
           <Footer />
           <Toaster />

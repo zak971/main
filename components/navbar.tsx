@@ -34,21 +34,21 @@ export function Navbar() {
       scrolled ? 'bg-white/90 backdrop-blur-md shadow-md' : 'bg-white/80 backdrop-blur-md'
     }`}>
       <div className="container mx-auto">
-        <div className="flex items-center justify-between h-16 px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4">
           {/* Logo and Title Section */}
           <Link 
             href="/" 
-            className="flex items-center space-x-3 transition-transform hover:scale-105"
+            className="flex items-center space-x-2 sm:space-x-3 transition-transform hover:scale-105"
           >
             <Image 
               src="/images/logo.png" 
               alt="Goa Car Rentals" 
-              width={120}
-              height={32}
-              className="h-8 w-auto sm:h-10" 
+              width={100}
+              height={28}
+              className="h-7 w-auto sm:h-8 md:h-10" 
               priority
             />
-            <div className="hidden sm:block text-lg sm:text-xl font-semibold text-gray-900">
+            <div className="hidden sm:block text-base sm:text-lg md:text-xl font-semibold text-gray-900">
               Goa Car Rentals
             </div>
           </Link>
@@ -59,7 +59,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 text-base font-medium text-gray-700 transition-all duration-200 hover:text-orange-500 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all hover:after:w-full"
+                className="px-3 sm:px-4 text-sm sm:text-base font-medium text-gray-700 transition-all duration-200 hover:text-orange-500 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -67,25 +67,25 @@ export function Navbar() {
           </nav>
 
           {/* Contact Buttons */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-2 sm:space-x-3">
             <Button 
               asChild 
               variant="outline" 
               size="sm"
-              className="border-2 hover:border-orange-500 hover:text-orange-500 transition-colors duration-300"
+              className="border-2 hover:border-orange-500 hover:text-orange-500 transition-colors duration-300 text-sm"
             >
-              <Link href="tel:+919307055218" className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
+              <Link href="tel:+919307055218" className="flex items-center space-x-1 sm:space-x-2">
+                <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="font-medium">Call Us</span>
               </Link>
             </Button>
             <Button 
               asChild 
               size="sm" 
-              className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 transition-all duration-300 shadow-md hover:shadow-lg text-sm"
             >
-              <Link href="https://wa.me/919307055218?text=I'm%20interested%20in%20renting%20a%20car%20in%20Goa" className="flex items-center space-x-2">
-                <WhatsApp className="w-4 h-4" />
+              <Link href="https://wa.me/919307055218?text=I'm%20interested%20in%20renting%20a%20car%20in%20Goa" className="flex items-center space-x-1 sm:space-x-2">
+                <WhatsApp className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="font-medium">WhatsApp</span>
               </Link>
             </Button>
@@ -97,26 +97,26 @@ export function Navbar() {
               <Button 
                 variant="ghost" 
                 size="icon"
-                className="hover:bg-gray-100 transition-colors duration-200"
+                className="hover:bg-gray-100 transition-colors duration-200 h-9 w-9"
                 aria-label="Toggle menu"
               >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
 
             {/* Mobile Menu Content */}
-            <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-white p-0">
+            <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-white p-0">
               <div className="flex flex-col h-full">
                 <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-                <div className="flex items-center justify-between p-4 border-b">
+                <div className="flex items-center justify-between p-3 sm:p-4 border-b">
                   <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2">
                     <Image 
                       src="/images/logo.png" 
                       alt="Goa Car Rentals" 
-                      width={100}
-                      height={28}
-                      className="h-8 w-auto" 
+                      width={90}
+                      height={25}
+                      className="h-7 w-auto sm:h-8" 
                     />
                   </Link>
                   <Button 
@@ -124,19 +124,20 @@ export function Navbar() {
                     size="icon"
                     onClick={() => setIsOpen(false)}
                     aria-label="Close menu"
+                    className="h-9 w-9"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
                   </Button>
                 </div>
                 
-                <nav className="flex-1 p-4">
-                  <ul className="space-y-4">
+                <nav className="flex-1 p-3 sm:p-4">
+                  <ul className="space-y-3 sm:space-y-4">
                     {navLinks.map((link) => (
                       <li key={link.href}>
                         <Link
                           href={link.href}
                           onClick={() => setIsOpen(false)}
-                          className="block py-2 text-base font-medium text-gray-700 hover:text-orange-500 transition-colors"
+                          className="block py-2 text-sm sm:text-base font-medium text-gray-700 hover:text-orange-500 transition-colors"
                         >
                           {link.label}
                         </Link>
@@ -145,12 +146,12 @@ export function Navbar() {
                   </ul>
                 </nav>
                 
-                <div className="p-4 border-t">
-                  <div className="flex flex-col space-y-3">
+                <div className="p-3 sm:p-4 border-t">
+                  <div className="flex flex-col space-y-2 sm:space-y-3">
                     <Button 
                       asChild 
                       variant="outline" 
-                      className="w-full border-2 hover:border-orange-500 hover:text-orange-500"
+                      className="w-full border-2 hover:border-orange-500 hover:text-orange-500 text-sm"
                     >
                       <Link href="tel:+919307055218" className="flex items-center justify-center space-x-2">
                         <Phone className="w-4 h-4" />
@@ -159,7 +160,7 @@ export function Navbar() {
                     </Button>
                     <Button 
                       asChild 
-                      className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600"
+                      className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-sm"
                     >
                       <Link href="https://wa.me/919307055218?text=I'm%20interested%20in%20renting%20a%20car%20in%20Goa" className="flex items-center justify-center space-x-2">
                         <WhatsApp className="w-4 h-4" />
