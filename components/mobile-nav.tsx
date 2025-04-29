@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, Phone, Car, MessageCircle } from "lucide-react"
+import { Menu, X, Phone, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function MobileNav() {
