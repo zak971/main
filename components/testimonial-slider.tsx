@@ -91,8 +91,12 @@ export function TestimonialSlider() {
     >
       <div className="overflow-hidden">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
+          className="flex transition-transform duration-700 ease-in-out will-change-transform"
+          style={{ 
+            transform: `translateX(-${current * 100}%)`,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden'
+          }}
         >
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="w-full flex-shrink-0 px-4">

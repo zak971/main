@@ -16,7 +16,11 @@ export function CarImageCarousel({ images, carName, onThumbnailClick }: CarImage
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     dragFree: true,
-    containScroll: 'trimSnaps'
+    containScroll: 'trimSnaps',
+    align: 'center',
+    skipSnaps: false,
+    inViewThreshold: 0.7,
+    dragThreshold: 10
   })
 
   const scrollPrev = useCallback(() => {

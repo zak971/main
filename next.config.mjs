@@ -14,8 +14,9 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizeCss: false,
+    optimizeCss: true,
     scrollRestoration: true,
+    optimizePackageImports: ['@radix-ui/react-scroll-area', '@radix-ui/react-select'],
   },
   // Remove standalone output for Windows compatibility
   // output: 'standalone',
