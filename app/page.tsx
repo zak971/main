@@ -90,7 +90,7 @@ export default function Home() {
               
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                 At Goa Car Rentals, we understand that your journey in Goa should be as memorable as the destination itself.
-                With years of experience, we've built our reputation on reliability, transparency, and exceptional service.
+                With years of experience, we&apos;ve built our reputation on reliability, transparency, and exceptional service.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -137,7 +137,7 @@ export default function Home() {
                       <h4 className="text-lg font-semibold text-gray-900">Local Expertise</h4>
                     </div>
                     <p className="text-gray-700 text-sm">
-                      Deep knowledge of Goa's roads and destinations to enhance your travel experience.
+                      Deep knowledge of Goa&apos;s roads and destinations to enhance your travel experience.
                     </p>
                   </div>
                 </div>
