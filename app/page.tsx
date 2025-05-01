@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, PhoneIcon as WhatsApp, Mail, ChevronRight, MapPin, Star, Car, Clock, Wallet, Shield, CheckCircle, ArrowRight } from "lucide-react"
+import { Phone, PhoneIcon as WhatsApp, Mail, ChevronRight, MapPin, Car, Clock, Shield, CheckCircle, ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { FeaturedCars } from "@/components/featured-cars"
@@ -26,8 +26,8 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4">
             Trusted <span className="text-gray-600">Fleet</span> for Every Journey
           </h2>
-           <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
-               Discover our modern, well-maintained vehicles ready to deliver a smooth and safe ride.
+           <p className="max-w-2xl text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+            Discover the perfect blend of comfort and style with our premium fleet of vehicles in Goa 🌴
           </p>
         </div>
 
