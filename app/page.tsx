@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, PhoneIcon as WhatsApp, Mail, ChevronRight, MapPin, Star, Car, Clock, Wallet, Shield, CheckCircle } from "lucide-react"
+import { Phone, PhoneIcon as WhatsApp, Mail, ChevronRight, MapPin, Star, Car, Clock, Wallet, Shield, CheckCircle, ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { FeaturedCars } from "@/components/featured-cars"
@@ -16,37 +16,32 @@ export default function Home() {
       {/* Featured Cars Section */}
       <section className="relative py-8 sm:py-12 md:py-16 overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-orange-900/20">
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-50 to-gray-100">
+          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-50/80 via-transparent to-transparent" />
         </div>
 
         <div className="container relative px-3 sm:px-4 mx-auto">
-          <div className="flex flex-col items-center mb-6 sm:mb-8 md:mb-12 text-center">
-            <div className="inline-flex items-center px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 mb-3 sm:mb-4 md:mb-6 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <span className="text-orange-400 text-xs sm:text-sm font-medium">Our Premium Fleet</span>
-              <Car className="w-3 h-3 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 text-orange-400" />
-            </div>
-            
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4">
-              Experience <span className="text-orange-400">Luxury</span> on Wheels
-            </h2>
-            <p className="max-w-2xl text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-              Choose from our wide range of well-maintained vehicles, from luxury sedans to spacious SUVs
-            </p>
-          </div>
+        <div className="flex flex-col items-center mb-10 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+            Trusted <span className="text-gray-600">Fleet</span> for Every Journey
+          </h2>
+           <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
+               Discover our modern, well-maintained vehicles ready to deliver a smooth and safe ride.
+          </p>
+        </div>
 
           <FeaturedCars />
           
-          <div className="flex justify-center mt-8 sm:mt-10 md:mt-12">
+          <div className="flex items-center justify-center mt-8">
             <Button 
-              asChild 
+              asChild
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-[0.98] shadow-md"
             >
-              <Link href="/cars" className="flex items-center">
-                View All Cars 
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform group-hover:translate-x-1" />
+              <Link href="/cars" className="flex items-center space-x-2">
+                <span>View All Cars</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
           </div>
@@ -54,95 +49,137 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-orange-900/20">
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+      <section id="about" className="relative py-12 md:py-16 bg-gray-50 overflow-hidden">
+        {/* Background Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-50 to-gray-100">
+          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-50/80 via-transparent to-transparent" />
         </div>
 
-        <div className="container relative px-3 sm:px-4 mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-            {/* Image Section */}
-            <div className="relative">
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl">
+        <div className="container relative px-4 sm:px-6 mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-10 md:mb-12">
+            
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">Your Trusted Partner</h2>
+            <div className="w-20 h-1 bg-gray-800 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Image */}
+            <div className="relative order-2 lg:order-1">
+              <div className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                 <Image
                   src="/images/about.jpg"
                   alt="About Goa Car Rentals"
                   width={600}
                   height={400}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover aspect-[4/3]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <p className="text-sm md:text-base font-medium">Experience the best of Goa with our premium fleet</p>
+                </div>
               </div>
             </div>
 
-            {/* Content Section */}
-            <div className="relative">
-              <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                <span className="text-orange-400 text-xs sm:text-sm font-medium">About Us</span>
-                <Star className="w-3 h-3 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 text-orange-400" />
-              </div>
+            {/* Content */}
+            <div className="space-y-6 order-1 lg:order-2">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                Your Trusted Partner for <span className="text-gray-800">Premium</span> Car Rentals in Goa
+              </h3>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
-                Your Trusted Partner for <span className="text-orange-400">Premium</span> Car Rentals in Goa
-              </h2>
-              
-              <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">&apos;At Goa Car Rentals, we understand that your journey in Goa should be as memorable as the destination itself. With years of experience in the car rental industry, we&apos;ve built our reputation on reliability, transparency, and exceptional service.&apos;</p>
-              
-              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-orange-500/10 flex items-center justify-center">
-                    <Car className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-                  </div>
-                  <div className="ml-3 sm:ml-4">
-                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">Premium Fleet</h3>
-                    <p className="text-sm sm:text-base text-gray-300">Well-maintained vehicles ranging from economy to luxury, ensuring comfort and reliability.</p>
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                At Goa Car Rentals, we understand that your journey in Goa should be as memorable as the destination itself.
+                With years of experience, we've built our reputation on reliability, transparency, and exceptional service.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Card 1 */}
+                <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="p-4 relative">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        <Car className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900">Premium Fleet</h4>
+                    </div>
+                    <p className="text-gray-700 text-sm">
+                      Well-maintained vehicles ranging from economy to luxury, ensuring comfort and reliability.
+                    </p>
                   </div>
                 </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-orange-500/10 flex items-center justify-center">
-                    <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-                  </div>
-                  <div className="ml-3 sm:ml-4">
-                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">Trusted Service</h3>
-                    <p className="text-sm sm:text-base text-gray-300">Transparent pricing, 24/7 support, and hassle-free booking process for your convenience.</p>
+
+                {/* Card 2 */}
+                <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="p-4 relative">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        <Shield className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900">Trusted Service</h4>
+                    </div>
+                    <p className="text-gray-700 text-sm">
+                      Transparent pricing, 24/7 support, and a hassle-free booking process for your convenience.
+                    </p>
                   </div>
                 </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-orange-500/10 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
+
+                {/* Card 3 */}
+                <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="p-4 relative">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        <MapPin className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900">Local Expertise</h4>
+                    </div>
+                    <p className="text-gray-700 text-sm">
+                      Deep knowledge of Goa's roads and destinations to enhance your travel experience.
+                    </p>
                   </div>
-                  <div className="ml-3 sm:ml-4">
-                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">Local Expertise</h3>
-                    <p className="text-sm sm:text-base text-gray-300">Deep knowledge of Goa&apos;s roads and destinations to enhance your travel experience.</p>
+                </div>
+
+                {/* Card 4 */}
+                <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="p-4 relative">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        <Clock className="w-5 h-5 text-gray-700" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900">Flexible Hours</h4>
+                    </div>
+                    <p className="text-gray-700 text-sm">
+                      Choose from daily or weekly rentals with flexible pickup and drop-off times.
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button 
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <Button
                   asChild
-                  size="lg" 
-                  className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  size="lg"
+                  className="group bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95"
                 >
-                  <Link href="/#contact" className="flex items-center">
-                    <span className="relative z-10">Learn More</span>
-                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-1.5 sm:ml-2 transition-transform group-hover:translate-x-1 relative z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%]"></div>
+                  <Link href="/#contact" className="flex items-center space-x-2">
+                    <span>Learn More</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>
-                <Button 
+
+                <Button
                   asChild
                   variant="outline"
-                  size="lg" 
-                  className="relative overflow-hidden border-2 border-white/20 bg-white/5 backdrop-blur-md hover:border-orange-500/50 text-white px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  size="lg"
+                  className="border-2 border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 hover:bg-gray-200/50 shadow-sm"
                 >
-                  <Link href="/#contact" className="flex items-center">
-                    <span className="relative z-10">Contact Us</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%]"></div>
+                  <Link href="/#contact" className="flex items-center space-x-2">
+                    <span>Contact Us</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>
               </div>
@@ -151,165 +188,165 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-orange-900/20">
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+      {/* Why Choose Us Section */}
+      <section className="relative py-12 md:py-16 bg-gray-50 overflow-hidden">
+        {/* Background Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-50 to-gray-100">
+          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-50/80 via-transparent to-transparent" />
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-orange-500/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-orange-400/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container relative px-3 sm:px-4 mx-auto">
-          {/* Header */}
-          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-12 md:mb-16">
-            <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-              <span className="text-orange-400 text-xs sm:text-sm font-medium">Why Choose Us</span>
-              <Star className="w-3 h-3 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 text-orange-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
-              Experience <span className="text-orange-400">Premium</span> Car Rental Service
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-              We provide exceptional service with a focus on quality, reliability, and customer satisfaction
-            </p>
+        <div className="container relative px-4 sm:px-6 mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">Experience Premium Service</h2>
+            <div className="w-20 h-1 bg-gray-800 mx-auto rounded-full"></div>
           </div>
 
-          {/* Main Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Premium Cars */}
-            <div className="group relative bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="p-6 sm:p-8 relative z-10">
-                <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                    <Car className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="p-6 relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <Car className="w-6 h-6 text-gray-700" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white">Premium Fleet</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Premium Fleet</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-sm leading-relaxed">
                   Drive the latest models, meticulously maintained and sanitized for your comfort and safety. Our fleet includes luxury cars, SUVs, and economy options.
                 </p>
               </div>
             </div>
 
             {/* 24/7 Support */}
-            <div className="group relative bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="p-6 sm:p-8 relative z-10">
-                <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                    <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="p-6 relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <Phone className="w-6 h-6 text-gray-700" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white">24/7 Support</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">24/7 Support</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-sm leading-relaxed">
                   Get instant assistance anytime via WhatsApp or call. Our local team is always ready to help with any queries or roadside support.
                 </p>
               </div>
             </div>
 
             {/* Easy Booking */}
-            <div className="group relative bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="p-6 sm:p-8 relative z-10">
-                <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                    <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="p-6 relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <CheckCircle className="w-6 h-6 text-gray-700" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white">Easy Booking</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Easy Booking</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-sm leading-relaxed">
                   Book instantly through WhatsApp. No complicated forms or waiting. Quick confirmation and doorstep delivery.
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* Additional Benefits */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            <div className="group bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-6 text-center border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
+            {/* Flexible Hours */}
+            <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="p-6 relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="w-6 h-6 text-gray-700" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900">Flexible Hours</h3>
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Choose from daily or weekly rentals with flexible pickup and drop-off times to suit your schedule.
+                </p>
               </div>
-              <h4 className="text-sm sm:text-base font-medium text-white mb-1">Flexible Hours</h4>
-              <p className="text-xs sm:text-sm text-gray-300">Daily or weekly rentals</p>
             </div>
 
-            <div className="group bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-6 text-center border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
+            {/* Full Insurance */}
+            <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="p-6 relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="w-6 h-6 text-gray-700" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900">Full Insurance</h3>
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Comprehensive coverage for all our vehicles, giving you peace of mind during your journey.
+                </p>
               </div>
-              <h4 className="text-sm sm:text-base font-medium text-white mb-1">Full Insurance</h4>
-              <p className="text-xs sm:text-sm text-gray-300">Comprehensive coverage</p>
             </div>
 
-            <div className="group bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-6 text-center border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
+            {/* Free Delivery */}
+            <div className="group relative bg-white/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-200/50 transition-all duration-300 hover:border-gray-300/50 hover:shadow-lg hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="p-6 relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <MapPin className="w-6 h-6 text-gray-700" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900">Free Delivery</h3>
+                </div>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Enjoy the convenience of doorstep delivery and pickup service across Goa.
+                </p>
               </div>
-              <h4 className="text-sm sm:text-base font-medium text-white mb-1">Free Delivery</h4>
-              <p className="text-xs sm:text-sm text-gray-300">Doorstep service</p>
-            </div>
-
-            <div className="group bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-6 text-center border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Wallet className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-              </div>
-              <h4 className="text-sm sm:text-base font-medium text-white mb-1">Best Rates</h4>
-              <p className="text-xs sm:text-sm text-gray-300">Transparent pricing</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden">
+      {/* Testimonials Section */}
+      <section className="relative py-12 md:py-16 overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-orange-900/20">
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
-        </div>
+        <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-50 to-gray-100" />
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-48 h-48 sm:w-72 sm:h-72 bg-gray-800/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-48 h-48 sm:w-72 sm:h-72 bg-gray-800/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
-        <div className="container relative px-4 mx-auto">
-          <div className="flex flex-col items-center mb-10 sm:mb-12 md:mb-16 text-center">
-            <span className="px-3 py-1 sm:px-4 sm:py-1.5 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-orange-400 bg-orange-400/10 rounded-full tracking-wide">
-              Testimonials
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white sm:text-5xl mb-3 sm:mb-4">
-              What Our Customers Say
-            </h2>
-            <p className="max-w-2xl text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed px-4 sm:px-0">
-              Don&apos;t just take our word for it. Here&apos;s what our valued customers have to say about their experience with us.
-            </p>
+        <div className="container relative z-10 px-4 sm:px-6 mx-auto">
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">What Our Clients Say</h2>
+            <p className="text-gray-600 text-sm sm:text-base">Discover the experiences of our satisfied customers who have enjoyed our premium car rental services in Goa.</p>
           </div>
 
-          <div className="max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
+          {/* Testimonial Slider */}
+          <div className="relative max-w-5xl mx-auto">
             <TestimonialSlider />
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 md:grid-cols-4 max-w-4xl mx-auto px-4 sm:px-0">
-            <div className="text-center transform hover:scale-105 transition-transform duration-300 p-2 sm:p-0">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500 mb-1 sm:mb-2">500+</div>
-              <div className="text-xs sm:text-sm text-gray-400 font-medium">Happy Customers</div>
-            </div>
-            <div className="text-center transform hover:scale-105 transition-transform duration-300 p-2 sm:p-0">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500 mb-1 sm:mb-2">4.9</div>
-              <div className="text-xs sm:text-sm text-gray-400 font-medium">Average Rating</div>
-            </div>
-            <div className="text-center transform hover:scale-105 transition-transform duration-300 p-2 sm:p-0">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500 mb-1 sm:mb-2">15+</div>
-              <div className="text-xs sm:text-sm text-gray-400 font-medium">Car Models</div>
-            </div>
-            <div className="text-center transform hover:scale-105 transition-transform duration-300 p-2 sm:p-0">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500 mb-1 sm:mb-2">24/7</div>
-              <div className="text-xs sm:text-sm text-gray-400 font-medium">Customer Support</div>
+          {/* Stats Section */}
+          <div className="max-w-5xl mx-auto mt-12 md:mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1">500+</div>
+                <div className="text-xs sm:text-sm text-gray-600">Happy Customers</div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1">4.8</div>
+                <div className="text-xs sm:text-sm text-gray-600">Average Rating</div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1">50+</div>
+                <div className="text-xs sm:text-sm text-gray-600">Premium Cars</div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1">24/7</div>
+                <div className="text-xs sm:text-sm text-gray-600">Customer Support</div>
+              </div>
             </div>
           </div>
         </div>
@@ -318,9 +355,9 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="relative py-20 overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-orange-900/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-orange-50/20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
         </div>
 
         {/* Decorative Elements */}
@@ -345,18 +382,18 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div className="space-y-6">
-              <div className="group relative bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 p-8">
+              <div className="group relative bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden border border-orange-100/50 transition-all duration-300 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 p-8">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <h3 className="text-xl font-semibold text-white mb-6">Contact Information</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Contact Information</h3>
                   <div className="space-y-6">
                     <div className="flex items-start">
                       <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-600/20 flex items-center justify-center mr-4">
                         <MapPin className="w-5 h-5 text-orange-400" />
                       </div>
                       <div>
-                        <p className="font-medium text-white mb-1">Address</p>
-                        <p className="text-gray-300">123 Beach Road, Calangute, North Goa, 403516</p>
+                        <p className="font-medium text-gray-900 mb-1">Address</p>
+                        <p className="text-gray-700">123 Beach Road, Calangute, North Goa, 403516</p>
                       </div>
                     </div>
 
@@ -365,10 +402,10 @@ export default function Home() {
                         <Phone className="w-5 h-5 text-orange-400" />
                       </div>
                       <div>
-                        <p className="font-medium text-white mb-1">Phone</p>
+                        <p className="font-medium text-gray-900 mb-1">Phone</p>
                         <Link
                           href="tel:+919307055218"
-                          className="text-gray-300 hover:text-orange-400 transition-colors"
+                          className="text-gray-700 hover:text-orange-500 transition-colors"
                         >
                           +91 9307055218
                         </Link>
@@ -380,10 +417,10 @@ export default function Home() {
                         <Mail className="w-5 h-5 text-orange-400" />
                       </div>
                       <div>
-                        <p className="font-medium text-white mb-1">Email</p>
+                        <p className="font-medium text-gray-900 mb-1">Email</p>
                         <Link
                           href="mailto:info@goacarrentals.com"
-                          className="text-gray-300 hover:text-orange-400 transition-colors"
+                          className="text-gray-700 hover:text-orange-400 transition-colors"
                         >
                           info@goacarrentals.com
                         </Link>
@@ -444,9 +481,9 @@ export default function Home() {
       {/* Enhanced CTA Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background with Pattern and Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-orange-900/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-orange-50/20">
           <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
         </div>
 
         {/* Decorative Elements */}

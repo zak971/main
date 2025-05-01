@@ -20,12 +20,7 @@ const slides = [
   {
     image: "/images/hero4.jpg",
   },
-  {
-    image: "/images/hero5.jpg",
-  },
-  {
-    image: "/images/hero6.jpg",
-  },
+  
 ]
 
 export function HeroCarousel() {
@@ -117,7 +112,7 @@ export function HeroCarousel() {
                   sizes="100vw"
                   className="object-cover brightness-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/90" />
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/90" />
                 <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
               </div>
             </div>
@@ -128,14 +123,10 @@ export function HeroCarousel() {
       {/* Static Content */}
       <div className="absolute inset-0 z-20">
         <div className="container relative z-20 flex flex-col items-center justify-center h-full px-4 mx-auto text-center">
-          {/* Premium Badge */}
-          <div className="inline-flex items-center px-3 py-1 mb-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-            <span className="text-orange-400 text-xs font-medium">Premium Car Rental Service</span>
-          </div>
-
+          
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide text-white mb-6 leading-tight">
-            Experience <span className="text-orange-400">Luxury</span> on Wheels
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide text-gray-100 mb-6 leading-tight">
+            Experience <span className="text-gray-200">Luxury</span> on Wheels
           </h1>
 
           {/* Subheading */}
@@ -147,7 +138,7 @@ export function HeroCarousel() {
           <Button 
             asChild
             size="lg" 
-            className="group bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            className="group bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-[0.98] shadow-md"
           >
             <Link href="/cars" className="flex items-center space-x-2">
               <Car className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -161,7 +152,7 @@ export function HeroCarousel() {
       <Button
         variant="outline"
         size="icon"
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 border-none text-white shadow-lg backdrop-blur-md h-8 w-8 sm:h-10 sm:w-10"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-gray-800/80 hover:bg-gray-700/80 border-none text-gray-200 shadow-lg backdrop-blur-md h-8 w-8 sm:h-10 sm:w-10"
         onClick={scrollPrev}
         disabled={!canScrollPrev}
       >
@@ -171,7 +162,7 @@ export function HeroCarousel() {
       <Button
         variant="outline"
         size="icon"
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/20 border-none text-white shadow-lg backdrop-blur-md h-8 w-8 sm:h-10 sm:w-10"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-gray-800/80 hover:bg-gray-700/80 border-none text-gray-200 shadow-lg backdrop-blur-md h-8 w-8 sm:h-10 sm:w-10"
         onClick={scrollNext}
         disabled={!canScrollNext}
       >
@@ -179,7 +170,7 @@ export function HeroCarousel() {
       </Button>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 text-white text-sm animate-pulse">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 text-gray-200 text-sm animate-pulse">
         <ChevronRight className="rotate-90 w-4 h-4" />
         Scroll Down
       </div>

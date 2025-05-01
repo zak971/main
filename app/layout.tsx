@@ -14,6 +14,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Goa Car Rentals",
   description: "Premium car rental service in Goa",
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 }
 
 export default function RootLayout({
