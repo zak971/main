@@ -10,24 +10,28 @@ import { Button } from "@/components/ui/button"
 const slides = [
   {
     image: "/images/hero1.jpg",
+    alt: "Luxury car rental in Goa",
   },
   {
     image: "/images/hero2.jpg",
+    alt: "Premium car fleet in Goa",
   },
   {
     image: "/images/hero3.jpg",
+    alt: "Goa car rental service",
   },
   {
     image: "/images/hero4.jpg",
+    alt: "Car rental in Goa",
   },
-  
 ]
 
 export function HeroCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     dragFree: true,
-    containScroll: 'trimSnaps'
+    containScroll: 'trimSnaps',
+    skipSnaps: true
   })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(true)
@@ -55,7 +59,7 @@ export function HeroCarousel() {
     handleSelect()
     emblaApi.on("select", handleSelect)
 
-    // Add autoplay
+    // Add autoplay with reduced interval
     let autoplay: NodeJS.Timeout
     const startAutoplay = () => {
       autoplay = setInterval(() => {
@@ -64,7 +68,7 @@ export function HeroCarousel() {
         } else {
           emblaApi.scrollTo(0)
         }
-      }, 4000) // Change slide every 6 seconds
+      }, 5000) // Increased interval to 5 seconds
     }
 
     // Start autoplay
@@ -105,15 +109,16 @@ export function HeroCarousel() {
               <div className="absolute inset-0">
                 <Image
                   src={slide.image}
-                  alt="Goa Car Rentals"
+                  alt={slide.alt}
                   fill
                   priority={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
                   sizes="100vw"
-                  className="object-cover brightness-110"
+                  quality={75}
+                  className="object-cover brightness-110 contrast-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/90" />
-                <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-gray-900/70" />
+                <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
               </div>
             </div>
           ))}
@@ -123,14 +128,13 @@ export function HeroCarousel() {
       {/* Static Content */}
       <div className="absolute inset-0 z-20">
         <div className="container relative z-20 flex flex-col items-center justify-center h-full px-4 mx-auto text-center">
-          
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide text-gray-100 mb-6 leading-tight">
-            Experience <span className="text-gray-200">Luxury</span> on Wheels
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-wide text-white mb-4 sm:mb-6 leading-tight">
+            Experience <span className="text-gray-100">Luxury</span> on Wheels
           </h1>
 
           {/* Subheading */}
-          <p className="max-w-2xl text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+          <p className="max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-6 sm:mb-8 leading-relaxed">
             Discover the perfect blend of comfort and style with our premium fleet of vehicles in Goa 🌴
           </p>
 
@@ -169,8 +173,8 @@ export function HeroCarousel() {
         <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
       </Button>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 text-gray-200 text-sm animate-pulse">
+      {/* Scroll Indicator - Only show on desktop */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:flex items-center gap-2 text-gray-200 text-sm animate-pulse">
         <ChevronRight className="rotate-90 w-4 h-4" />
         Scroll Down
       </div>

@@ -15,7 +15,7 @@ export function CarCard({ car }: CarCardProps) {
   return (
     <Link 
       href={`/cars/${car.id}`}
-      className="group relative bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 active:scale-[0.98]"
+      className="group relative bg-gray-100 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-2 hover:border-gray-300 active:scale-[0.98] transform-gpu"
     >
       {/* Image Container */}
       <div className="relative w-full aspect-[16/9] overflow-hidden">
@@ -36,8 +36,8 @@ export function CarCard({ car }: CarCardProps) {
         
         {/* Featured Badge */}
         {car.featured && (
-          <Badge className="absolute top-3 right-3 bg-orange-500/90 backdrop-blur-sm text-white px-2 py-0.5 text-xs sm:text-sm font-medium border border-orange-400/30">
-            <Star className="w-3 h-3 mr-1" />
+          <Badge className="absolute top-3 right-3 bg-gradient-to-r from-gray-700 to-gray-800 text-gray-100 px-2 py-0.5 text-xs sm:text-sm font-medium backdrop-blur-sm border border-gray-600/30 shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+            <Star className="w-3 h-3 mr-1 inline-block" />
             Featured
           </Badge>
         )}
@@ -46,39 +46,39 @@ export function CarCard({ car }: CarCardProps) {
       {/* Content Section */}
       <div className="p-4 sm:p-6">
         <div className="mb-4">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 group-hover:text-orange-600 transition-colors">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 group-hover:text-gray-800 transition-colors">
             {car.name}
           </h3>
           <div className="flex items-baseline space-x-1 sm:space-x-2">
-            <p className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">
               ₹{car.price}
             </p>
-            <span className="text-sm sm:text-base font-normal text-gray-500">/day</span>
+            <span className="text-sm sm:text-base font-normal text-gray-600">/day</span>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-y-3 sm:gap-y-4 gap-x-4 sm:gap-x-6">
           <div className="flex items-center space-x-2 sm:space-x-3 group-hover:translate-x-1 transition-transform duration-300">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300">
-              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300 shadow-sm">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
             </div>
             <span className="text-xs sm:text-sm font-medium text-gray-700">{car.seats} Seats</span>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-3 group-hover:translate-x-1 transition-transform duration-300">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300">
-              <Settings className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300 shadow-sm">
+              <Settings className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
             </div>
             <span className="text-xs sm:text-sm font-medium text-gray-700">{car.transmission}</span>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-3 group-hover:translate-x-1 transition-transform duration-300">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300">
-              <Fuel className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300 shadow-sm">
+              <Fuel className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
             </div>
             <span className="text-xs sm:text-sm font-medium text-gray-700">{car.fuelType}</span>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-3 group-hover:translate-x-1 transition-transform duration-300">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300">
-              <Car className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg sm:rounded-xl group-hover:shadow-md transition-all duration-300 shadow-sm">
+              <Car className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
             </div>
             <span className="text-xs sm:text-sm font-medium text-gray-700">A/C</span>
           </div>
@@ -88,7 +88,7 @@ export function CarCard({ car }: CarCardProps) {
         <Button 
           asChild
           variant="outline" 
-          className="w-full mt-6 border-2 border-orange-200 hover:border-orange-600 hover:text-orange-600 text-gray-700 font-medium transition-all duration-300 hover:bg-orange-50 group-hover:shadow-md text-sm sm:text-base"
+          className="w-full mt-6 border-2 border-gray-300 hover:border-gray-400 hover:text-gray-800 text-gray-700 font-medium transition-all duration-300 hover:bg-gray-200/50 group-hover:shadow-md text-sm sm:text-base shadow-sm"
         >
           <div className="flex items-center justify-center py-2 sm:py-2.5">
             View Details

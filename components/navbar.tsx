@@ -49,7 +49,7 @@ export function Navbar() {
       <div className={`${
         theme === 'dark' 
           ? 'bg-gray-900/95 text-white' 
-          : 'bg-white/95 text-gray-900'
+          : 'bg-gradient-to-br from-gray-100 via-gray-100 to-gray-200 text-gray-900'
       } backdrop-blur-md shadow-md`}>
         <div className="container mx-auto">
           <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4">
@@ -140,7 +140,7 @@ export function Navbar() {
 
               {/* Mobile Menu Content */}
               <SheetContent side="right" className={`w-[280px] sm:w-[320px] ${
-                theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+                theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-br from-gray-100 via-gray-100 to-gray-200'
               } p-0`}>
                 <div className="flex flex-col h-full">
                   <SheetTitle className="sr-only">Mobile Menu</SheetTitle>

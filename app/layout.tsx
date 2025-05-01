@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -9,7 +9,20 @@ import { MobileNav } from "@/components/mobile-nav"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ["latin"] })
+// Optimize font loading
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#ffffff",
+}
 
 export const metadata: Metadata = {
   title: "Goa Car Rentals",
@@ -27,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -37,7 +50,9 @@ export default function RootLayout({
         >
           <Navbar />
           <MobileNav />
-          {children}
+          <main className="min-h-screen">
+            {children}
+          </main>
           <Footer />
           <Toaster />
         </ThemeProvider>
