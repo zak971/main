@@ -16,10 +16,12 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-200 to-gray-300 relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-200/80 via-transparent to-transparent" />
+    <div className="min-h-screen relative">
+      {/* Background Layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-neutral-900 to-neutral-800">
+        <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+      </div>
       
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-48 h-48 sm:w-72 sm:h-72 bg-gray-800/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -27,7 +29,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
       
       <div className="container relative px-4 pt-20 sm:pt-24 pb-12 sm:pb-16 mx-auto">
         {/* Back Button */}
-        <Button asChild variant="ghost" className="mb-6 sm:mb-8 text-gray-900 hover:text-gray-700 hover:bg-gray-200/50">
+        <Button asChild variant="ghost" className="mb-6 sm:mb-8 text-white hover:text-gray-300 hover:bg-white/10">
           <Link href="/cars" className="flex items-center">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Cars
@@ -35,7 +37,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         </Button>
         
         <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200/50 shadow-xl">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/20 shadow-xl">
             <CarImageCarousel 
               images={car.images || [car.image || "/images/car-placeholder.jpg"]}
               carName={car.name}
@@ -44,70 +46,72 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
 
           <div className="space-y-5 sm:space-y-6">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">{car.name}</h1>
-              <p className="mt-2 text-2xl sm:text-3xl font-bold text-gray-700">₹{car.price}<span className="text-base sm:text-lg font-normal text-gray-500 ml-1">/day</span></p>
+              <h1 className="text-3xl sm:text-4xl font-bold text-white">{car.name}</h1>
+              <p className="mt-2 text-2xl sm:text-3xl font-bold text-white">₹{car.price}<span className="text-base sm:text-lg font-normal text-gray-400 ml-1">/day</span></p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <div className="flex items-center p-3 sm:p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 hover:border-gray-300/50 transition-all duration-300">
-                <div className="p-2 sm:p-3 bg-gray-200/50 rounded-lg mr-3 sm:mr-4">
-                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
+              <div className="flex items-center p-3 sm:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300">
+                <div className="p-2 sm:p-3 bg-white/10 rounded-lg mr-3 sm:mr-4">
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm text-gray-500">Seats</p>
-                  <p className="text-sm sm:text-base font-medium text-gray-900">{car.seats} Persons</p>
+                  <p className="text-xs sm:text-sm text-gray-400">Seats</p>
+                  <p className="text-sm sm:text-base font-medium text-white">{car.seats} Persons</p>
                 </div>
               </div>
 
-              <div className="flex items-center p-3 sm:p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 hover:border-gray-300/50 transition-all duration-300">
-                <div className="p-2 sm:p-3 bg-gray-200/50 rounded-lg mr-3 sm:mr-4">
-                  <Settings className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
+              <div className="flex items-center p-3 sm:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300">
+                <div className="p-2 sm:p-3 bg-white/10 rounded-lg mr-3 sm:mr-4">
+                  <Settings className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm text-gray-500">Transmission</p>
-                  <p className="text-sm sm:text-base font-medium text-gray-900">{car.transmission}</p>
+                  <p className="text-xs sm:text-sm text-gray-400">Transmission</p>
+                  <p className="text-sm sm:text-base font-medium text-white">{car.transmission}</p>
                 </div>
               </div>
 
-              <div className="flex items-center p-3 sm:p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 hover:border-gray-300/50 transition-all duration-300">
-                <div className="p-2 sm:p-3 bg-gray-200/50 rounded-lg mr-3 sm:mr-4">
-                  <Fuel className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
+              <div className="flex items-center p-3 sm:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300">
+                <div className="p-2 sm:p-3 bg-white/10 rounded-lg mr-3 sm:mr-4">
+                  <Fuel className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm text-gray-500">Fuel Type</p>
-                  <p className="text-sm sm:text-base font-medium text-gray-900">{car.fuelType}</p>
+                  <p className="text-xs sm:text-sm text-gray-400">Fuel Type</p>
+                  <p className="text-sm sm:text-base font-medium text-white">{car.fuelType}</p>
                 </div>
               </div>
 
-              <div className="flex items-center p-3 sm:p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 hover:border-gray-300/50 transition-all duration-300">
-                <div className="p-2 sm:p-3 bg-gray-200/50 rounded-lg mr-3 sm:mr-4">
-                  <Car className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
+              <div className="flex items-center p-3 sm:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300">
+                <div className="p-2 sm:p-3 bg-white/10 rounded-lg mr-3 sm:mr-4">
+                  <Car className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm text-gray-500">Air Conditioning</p>
-                  <p className="text-sm sm:text-base font-medium text-gray-900">Yes</p>
+                  <p className="text-xs sm:text-sm text-gray-400">Type</p>
+                  <p className="text-sm sm:text-base font-medium text-white">{car.type}</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <Button 
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
                 asChild
-                className="bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                size="lg"
+                className="group bg-gradient-to-r from-neutral-800 to-neutral-900 hover:from-neutral-700 hover:to-neutral-800 text-white font-medium transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] shadow-md"
               >
-                <Link href={`https://wa.me/919307055218?text=I'm%20interested%20in%20renting%20the%20${car.name}`} className="flex items-center justify-center">
-                  <WhatsApp className="w-4 h-4 mr-2" />
-                  Book via WhatsApp
+                <Link href="tel:+919307055218" className="flex items-center space-x-2">
+                  <Phone className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                  <span>Call Now</span>
                 </Link>
               </Button>
-              <Button 
+
+              <Button
                 asChild
-                variant="outline" 
-                className="border-gray-300 text-gray-700 hover:bg-gray-200/50 hover:text-gray-900 shadow-md transition-all duration-300"
+                size="lg"
+                className="group bg-gradient-to-r from-green-700 to-green-800 hover:from-green-600 hover:to-green-700 text-white font-medium transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] shadow-md"
               >
-                <Link href="tel:+919307055218" className="flex items-center justify-center">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call to Book
+                <Link href="https://wa.me/919307055218?text=I'm%20interested%20in%20renting%20a%20car%20in%20Goa" className="flex items-center space-x-2">
+                  <WhatsApp className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                  <span>WhatsApp Now</span>
                 </Link>
               </Button>
             </div>
@@ -116,85 +120,72 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
 
         <div className="mt-10 sm:mt-12">
           <Tabs defaultValue="features" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-white/80 backdrop-blur-sm border border-gray-200/50">
-              <TabsTrigger value="features" className="data-[state=active]:bg-gray-200/50 data-[state=active]:text-gray-900">Features</TabsTrigger>
-              <TabsTrigger value="terms" className="data-[state=active]:bg-gray-200/50 data-[state=active]:text-gray-900">Terms</TabsTrigger>
-              <TabsTrigger value="reviews" className="data-[state=active]:bg-gray-200/50 data-[state=active]:text-gray-900">Reviews</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 bg-white/10 backdrop-blur-sm border border-white/20">
+              <TabsTrigger value="features" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Features</TabsTrigger>
+              <TabsTrigger value="terms" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Terms</TabsTrigger>
+              <TabsTrigger value="reviews" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Reviews</TabsTrigger>
             </TabsList>
             <TabsContent value="features" className="mt-4 sm:mt-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Car Features</h3>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Car Features</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                   {car.features?.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-2">
-                      <Check className="w-4 h-4 text-gray-700" />
-                      <span className="text-sm sm:text-base text-gray-700">{feature}</span>
+                      <Check className="w-4 h-4 text-white" />
+                      <span className="text-sm sm:text-base text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </TabsContent>
             <TabsContent value="terms" className="mt-4 sm:mt-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Rental Terms</h3>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Rental Terms</h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="p-1.5 bg-gray-200/50 rounded-lg mt-0.5">
-                      <Clock className="w-4 h-4 text-gray-700" />
-                    </div>
+                    <Clock className="w-5 h-5 text-white mt-1" />
                     <div>
-                      <h4 className="text-base font-medium text-gray-900">Minimum Rental Period</h4>
-                      <p className="text-sm text-gray-700">24 hours from the time of pickup</p>
+                      <h4 className="text-base font-medium text-white">Minimum Rental Period</h4>
+                      <p className="text-sm text-gray-300">24 hours</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="p-1.5 bg-gray-200/50 rounded-lg mt-0.5">
-                      <Wallet className="w-4 h-4 text-gray-700" />
-                    </div>
+                    <Wallet className="w-5 h-5 text-white mt-1" />
                     <div>
-                      <h4 className="text-base font-medium text-gray-900">Security Deposit</h4>
-                      <p className="text-sm text-gray-700">₹5,000 (refundable upon return in good condition)</p>
+                      <h4 className="text-base font-medium text-white">Security Deposit</h4>
+                      <p className="text-sm text-gray-300">₹5,000 (refundable)</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="p-1.5 bg-gray-200/50 rounded-lg mt-0.5">
-                      <Shield className="w-4 h-4 text-gray-700" />
-                    </div>
+                    <Shield className="w-5 h-5 text-white mt-1" />
                     <div>
-                      <h4 className="text-base font-medium text-gray-900">Insurance</h4>
-                      <p className="text-sm text-gray-700">Comprehensive insurance included</p>
+                      <h4 className="text-base font-medium text-white">Insurance</h4>
+                      <p className="text-sm text-gray-300">Comprehensive insurance included</p>
                     </div>
                   </div>
                 </div>
               </div>
             </TabsContent>
             <TabsContent value="reviews" className="mt-4 sm:mt-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200/50 p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Customer Reviews</h3>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Customer Reviews</h3>
                 <div className="space-y-4">
-                  <div className="p-4 bg-white/80 rounded-lg border border-gray-200/50 hover:border-gray-300/50 transition-all duration-300">
-                    <div className="flex items-center mb-2">
-                      <div className="flex">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-4 h-4 text-gray-700 fill-gray-700" />
-                        ))}
+                  <div className="flex items-start space-x-3">
+                    <div className="flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                        <Star className="w-5 h-5 text-yellow-400" />
                       </div>
-                      <span className="ml-2 text-sm text-gray-700">5.0</span>
                     </div>
-                    <p className="text-sm text-gray-700">&quot;Excellent service! The car was in perfect condition and the staff was very helpful.&quot;</p>
-                    <p className="text-xs text-gray-500">- Rahul S.</p>
-                  </div>
-                  <div className="p-4 bg-white/80 rounded-lg border border-gray-200/50 hover:border-gray-300/50 transition-all duration-300">
-                    <div className="flex items-center mb-2">
-                      <div className="flex">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-4 h-4 text-gray-700 fill-gray-700" />
-                        ))}
+                    <div>
+                      <div className="flex items-center space-x-1">
+                        <Star className="w-4 h-4 text-yellow-400" />
+                        <Star className="w-4 h-4 text-yellow-400" />
+                        <Star className="w-4 h-4 text-yellow-400" />
+                        <Star className="w-4 h-4 text-yellow-400" />
+                        <Star className="w-4 h-4 text-yellow-400" />
                       </div>
-                      <span className="ml-2 text-sm text-gray-700">5.0</span>
+                      <p className="text-sm text-gray-300 mt-1">"Excellent service and the car was in perfect condition. Will definitely rent again!"</p>
                     </div>
-                    <p className="text-sm text-gray-700">&quot;Smooth rental process and the car was exactly as described. Will definitely rent again!&quot;</p>
-                    <p className="text-xs text-gray-500">- Priya M.</p>
                   </div>
                 </div>
               </div>

@@ -73,21 +73,21 @@ export function CarImageCarousel({ images, carName, onThumbnailClick }: CarImage
       <Button
         variant="outline"
         size="icon"
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white"
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-900/50 hover:bg-gray-900/70 border-none text-white backdrop-blur-sm rounded-full w-8 h-8 sm:w-10 sm:h-10 transition-all duration-300 hover:scale-110 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={scrollPrev}
         aria-label="Previous image"
       >
-        <ChevronLeft className="h-4 w-4" />
+        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:-translate-x-1" />
       </Button>
 
       <Button
         variant="outline"
         size="icon"
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm hover:bg-white"
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-900/50 hover:bg-gray-900/70 border-none text-white backdrop-blur-sm rounded-full w-8 h-8 sm:w-10 sm:h-10 transition-all duration-300 hover:scale-110 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={scrollNext}
         aria-label="Next image"
       >
-        <ChevronRight className="h-4 w-4" />
+        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1" />
       </Button>
     </div>
   )

@@ -48,8 +48,8 @@ export function Navbar() {
     }`}>
       <div className={`${
         theme === 'dark' 
-          ? 'bg-gray-900/95 text-white' 
-          : 'bg-gradient-to-br from-gray-100 via-gray-100 to-gray-200 text-gray-900'
+          ? 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white' 
+          : 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white'
       } backdrop-blur-md shadow-md`}>
         <div className="container mx-auto">
           <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4">
@@ -66,8 +66,8 @@ export function Navbar() {
                 className="h-7 w-auto sm:h-8 md:h-10" 
                 priority
               />
-              <div className={`hidden sm:block text-base sm:text-lg md:text-xl font-semibold ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              <div className={`hidden sm:block text-base sm:text-lg md:text-xl font-bold ${
+                theme === 'dark' ? 'text-white' : 'text-white'
               }`}>
                 Goa Car Rentals
               </div>
@@ -79,8 +79,8 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 sm:px-4 text-sm sm:text-base font-medium ${
-                    theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+                  className={`px-3 sm:px-4 text-sm sm:text-base font-semibold ${
+                    theme === 'dark' ? 'text-white' : 'text-white'
                   } transition-all duration-200 hover:text-orange-500 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all hover:after:w-full`}
                 >
                   {link.label}
@@ -96,13 +96,13 @@ export function Navbar() {
                 size="sm"
                 className={`group border-2 ${
                   theme === 'dark' 
-                    ? 'border-gray-700 text-gray-200 hover:border-orange-500 hover:text-orange-500' 
-                    : 'border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-500'
+                    ? 'border-white/20 bg-white/5 text-white hover:border-orange-500 hover:text-orange-500 hover:bg-white/10' 
+                    : 'border-white/20 bg-white/5 text-white hover:border-orange-500 hover:text-orange-500 hover:bg-white/10'
                 } transition-all duration-300 text-sm hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20 relative overflow-hidden`}
               >
                 <Link href="tel:+919307055218" className="flex items-center space-x-1 sm:space-x-2">
                   <Phone className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:rotate-12" />
-                  <span className="font-medium relative">
+                  <span className="font-semibold relative">
                     Call Us
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
                   </span>
