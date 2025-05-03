@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from '@vercel/analytics/next'
 
 import { Navbar } from "@/components/navbar"
 import { MobileNav } from "@/components/mobile-nav"
@@ -50,6 +51,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
