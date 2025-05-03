@@ -38,11 +38,7 @@ export function MobileNav() {
       <div className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
-        <div className={`${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white' 
-            : 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white'
-        } backdrop-blur-md border-b border-neutral-800/50 shadow-lg`}>
+        <div className="bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white backdrop-blur-md border-b border-neutral-800/50 shadow-lg">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-16">
               {/* Mobile Logo */}
@@ -83,11 +79,7 @@ export function MobileNav() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className={`fixed inset-0 z-40 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800' 
-            : 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800'
-        } backdrop-blur-md pt-16`}>
+        <div className="fixed inset-0 z-40 bg-gradient-to-br from-black via-neutral-900 to-neutral-800 backdrop-blur-md pt-16">
           <div className="container mx-auto px-4">
             <nav className="flex flex-col space-y-8 py-8">
               <Link

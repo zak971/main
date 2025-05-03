@@ -87,12 +87,12 @@ export function CarCard({ car }: CarCardProps) {
         {/* View Details Button */}
         <Button 
           asChild
-          variant="outline" 
-          className="w-full mt-6 border-2 border-gray-300 hover:border-gray-400 hover:text-gray-800 text-gray-700 font-medium transition-all duration-300 hover:bg-gray-200/50 group-hover:shadow-md text-sm sm:text-base shadow-sm"
+          className="w-full mt-6 bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium transition-all duration-300 hover:shadow-lg shadow-sm py-2.5 sm:py-3 group-hover:-translate-y-0.5 text-sm sm:text-base relative overflow-hidden border border-gray-700/30"
         >
-          <div className="flex items-center justify-center py-2 sm:py-2.5">
-            View Details
-            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform group-hover:translate-x-1" />
+          <div className="flex items-center justify-center relative z-10">
+            <span>View Details</span>
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-2 transition-transform group-hover:translate-x-2" />
+            <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </div>
         </Button>
       </div>

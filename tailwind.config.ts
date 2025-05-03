@@ -9,6 +9,14 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
+    screens: {
+      'xs': '480px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
@@ -83,11 +91,22 @@ const config: Config = {
   				to: {
   					height: '0'
   				}
+  			},
+  			'fadeIn': {
+  			  from: {
+  			    opacity: '0',
+  			    transform: 'translateY(10px)'
+  			  },
+  			  to: {
+  			    opacity: '1',
+  			    transform: 'translateY(0)'
+  			  }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			'fadeIn': 'fadeIn 0.3s ease-out'
   		}
   	}
   },

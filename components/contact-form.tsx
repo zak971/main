@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Loader2 } from "lucide-react"
+import { Loader2, Send, User, Mail, Phone, MessageSquare } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -91,34 +91,47 @@ Message: ${data.message}
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="p-6 space-y-6 bg-gray-50 rounded-lg">
-        <h3 className="text-xl font-medium">Send us a message</h3>
-
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-5">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel className="text-white font-medium flex items-center gap-2">
+                <User className="w-4 h-4 text-neutral-400" />
+                <span>Full Name</span>
+              </FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+                <Input 
+                  placeholder="John Doe" 
+                  {...field} 
+                  className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500"
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-orange-400" />
             </FormItem>
           )}
         />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-white font-medium flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-neutral-400" />
+                  <span>Email</span>
+                </FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@example.com" {...field} />
+                  <Input 
+                    type="email" 
+                    placeholder="john@example.com" 
+                    {...field}
+                    className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500"
+                  />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-orange-400" />
               </FormItem>
             )}
           />
@@ -128,11 +141,18 @@ Message: ${data.message}
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel className="text-white font-medium flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-neutral-400" />
+                  <span>Phone Number</span>
+                </FormLabel>
                 <FormControl>
-                  <Input placeholder="+91 98765 43210" {...field} />
+                  <Input 
+                    placeholder="+91 98765 43210" 
+                    {...field}
+                    className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500"
+                  />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-orange-400" />
               </FormItem>
             )}
           />
@@ -143,22 +163,22 @@ Message: ${data.message}
           name="carType"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Interested In</FormLabel>
+              <FormLabel className="text-white font-medium">Interested In</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="bg-neutral-800/50 border-neutral-700 text-white focus:ring-orange-500">
                     <SelectValue placeholder="Select car type" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="economy">Economy Car</SelectItem>
-                  <SelectItem value="sedan">Sedan</SelectItem>
-                  <SelectItem value="suv">SUV</SelectItem>
-                  <SelectItem value="luxury">Luxury Car</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                <SelectContent className="bg-neutral-800 border-neutral-700 text-white">
+                  <SelectItem value="SUV" className="hover:bg-neutral-700 focus:bg-neutral-700">SUV</SelectItem>
+                  <SelectItem value="Sedan" className="hover:bg-neutral-700 focus:bg-neutral-700">Sedan</SelectItem>
+                  <SelectItem value="MPV" className="hover:bg-neutral-700 focus:bg-neutral-700">MPV</SelectItem>
+                  <SelectItem value="Luxury" className="hover:bg-neutral-700 focus:bg-neutral-700">Luxury</SelectItem>
+                  <SelectItem value="Economy" className="hover:bg-neutral-700 focus:bg-neutral-700">Economy</SelectItem>
                 </SelectContent>
               </Select>
-              <FormMessage />
+              <FormMessage className="text-orange-400" />
             </FormItem>
           )}
         />
@@ -168,23 +188,37 @@ Message: ${data.message}
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="text-white font-medium flex items-center gap-2">
+                <MessageSquare className="w-4 h-4 text-neutral-400" />
+                <span>Message</span>
+              </FormLabel>
               <FormControl>
-                <Textarea placeholder="Tell us about your requirements..." className="min-h-[120px]" {...field} />
+                <Textarea 
+                  placeholder="Tell us about your requirements, travel dates, etc..." 
+                  className="min-h-[120px] bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500" 
+                  {...field} 
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-orange-400" />
             </FormItem>
           )}
         />
 
-        <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600" disabled={isSubmitting}>
+        <Button 
+          type="submit" 
+          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium py-6 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" 
+          disabled={isSubmitting}
+        >
           {isSubmitting ? (
             <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
               Sending...
             </>
           ) : (
-            "Send Inquiry"
+            <>
+              <Send className="w-5 h-5 mr-2" />
+              Send Message
+            </>
           )}
         </Button>
       </form>

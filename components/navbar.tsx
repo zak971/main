@@ -46,11 +46,7 @@ export function Navbar() {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
-      <div className={`${
-        theme === 'dark' 
-          ? 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white' 
-          : 'bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white'
-      } backdrop-blur-md shadow-md`}>
+      <div className="bg-gradient-to-br from-black via-neutral-900 to-neutral-800 text-white backdrop-blur-md shadow-md">
         <div className="container mx-auto">
           <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4">
             {/* Logo and Title Section */}
@@ -66,9 +62,7 @@ export function Navbar() {
                 className="h-7 w-auto sm:h-8 md:h-10" 
                 priority
               />
-              <div className={`hidden sm:block text-base sm:text-lg md:text-xl font-bold ${
-                theme === 'dark' ? 'text-white' : 'text-white'
-              }`}>
+              <div className="hidden sm:block text-base sm:text-lg md:text-xl font-bold text-white">
                 Goa Car Rentals
               </div>
             </Link>
@@ -79,9 +73,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 sm:px-4 text-sm sm:text-base font-semibold ${
-                    theme === 'dark' ? 'text-white' : 'text-white'
-                  } transition-all duration-200 hover:text-orange-500 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all hover:after:w-full`}
+                  className="px-3 sm:px-4 text-sm sm:text-base font-semibold text-white transition-all duration-200 hover:text-orange-500 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-orange-500 after:transition-all hover:after:w-full"
                 >
                   {link.label}
                 </Link>
@@ -126,11 +118,7 @@ export function Navbar() {
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  className={`${
-                    theme === 'dark' 
-                      ? 'hover:bg-gray-800/50 text-white' 
-                      : 'hover:bg-gray-100 text-gray-900'
-                  } transition-colors duration-200 h-9 w-9`}
+                  className="hover:bg-gray-800/50 text-white transition-colors duration-200 h-9 w-9"
                   aria-label="Toggle menu"
                 >
                   <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -139,14 +127,10 @@ export function Navbar() {
               </SheetTrigger>
 
               {/* Mobile Menu Content */}
-              <SheetContent side="right" className={`w-[280px] sm:w-[320px] ${
-                theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-br from-gray-100 via-gray-100 to-gray-200'
-              } p-0`}>
+              <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-gray-900 p-0">
                 <div className="flex flex-col h-full">
                   <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-                  <div className={`flex items-center justify-between p-3 sm:p-4 border-b ${
-                    theme === 'dark' ? 'border-gray-800' : 'border-gray-200'
-                  }`}>
+                  <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-800">
                     <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2">
                       <Image 
                         src="/images/logo.png" 
@@ -161,11 +145,7 @@ export function Navbar() {
                       size="icon"
                       onClick={() => setIsOpen(false)}
                       aria-label="Close menu"
-                      className={`h-9 w-9 ${
-                        theme === 'dark' 
-                          ? 'text-white hover:bg-gray-800/50' 
-                          : 'text-gray-900 hover:bg-gray-100'
-                      }`}
+                      className="h-9 w-9 text-white hover:bg-gray-800/50"
                     >
                       <X className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
@@ -178,11 +158,7 @@ export function Navbar() {
                           <Link
                             href={link.href}
                             onClick={() => setIsOpen(false)}
-                            className={`block py-2 text-sm sm:text-base font-medium ${
-                              theme === 'dark' 
-                                ? 'text-gray-200 hover:text-orange-500' 
-                                : 'text-gray-700 hover:text-orange-500'
-                            } transition-colors`}
+                            className="block py-2 text-sm sm:text-base font-medium text-gray-200 hover:text-orange-500 transition-colors"
                           >
                             {link.label}
                           </Link>

@@ -120,71 +120,93 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
 
         <div className="mt-10 sm:mt-12">
           <Tabs defaultValue="features" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-white/10 backdrop-blur-sm border border-white/20">
-              <TabsTrigger value="features" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Features</TabsTrigger>
-              <TabsTrigger value="terms" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Terms</TabsTrigger>
-              <TabsTrigger value="reviews" className="data-[state=active]:bg-white/20 data-[state=active]:text-white">Reviews</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 bg-white/10 backdrop-blur-sm border border-white/20 h-14 sm:h-12 p-1.5 sm:p-1 rounded-lg shadow-md">
+              <TabsTrigger 
+                value="features" 
+                className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-gray-300 hover:text-white transition-colors py-2.5 sm:py-2 text-sm sm:text-base rounded-md font-medium data-[state=active]:shadow-md data-[state=active]:border-b-2 data-[state=active]:border-orange-500"
+              >
+                Features
+              </TabsTrigger>
+              <TabsTrigger 
+                value="terms" 
+                className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-gray-300 hover:text-white transition-colors py-2.5 sm:py-2 text-sm sm:text-base rounded-md font-medium data-[state=active]:shadow-md data-[state=active]:border-b-2 data-[state=active]:border-orange-500"
+              >
+                Terms
+              </TabsTrigger>
+              <TabsTrigger 
+                value="reviews" 
+                className="data-[state=active]:bg-white/20 data-[state=active]:text-white text-gray-300 hover:text-white transition-colors py-2.5 sm:py-2 text-sm sm:text-base rounded-md font-medium data-[state=active]:shadow-md data-[state=active]:border-b-2 data-[state=active]:border-orange-500"
+              >
+                Reviews
+              </TabsTrigger>
             </TabsList>
-            <TabsContent value="features" className="mt-4 sm:mt-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Car Features</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+            <TabsContent value="features" className="mt-5 sm:mt-6 animate-fadeIn">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-5 sm:p-6">
+                <h3 className="text-xl font-semibold text-white mb-4 sm:mb-5">Car Features</h3>
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
                   {car.features?.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <Check className="w-4 h-4 text-white" />
+                    <div key={index} className="flex items-center space-x-3 py-1.5">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                        <Check className="w-3.5 h-3.5 text-white" />
+                      </div>
                       <span className="text-sm sm:text-base text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="terms" className="mt-4 sm:mt-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Rental Terms</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <Clock className="w-5 h-5 text-white mt-1" />
+            <TabsContent value="terms" className="mt-5 sm:mt-6 animate-fadeIn">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-5 sm:p-6">
+                <h3 className="text-xl font-semibold text-white mb-4 sm:mb-5">Rental Terms</h3>
+                <div className="space-y-5">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-white" />
+                    </div>
                     <div>
-                      <h4 className="text-base font-medium text-white">Minimum Rental Period</h4>
+                      <h4 className="text-base font-medium text-white mb-1">Minimum Rental Period</h4>
                       <p className="text-sm text-gray-300">24 hours</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <Wallet className="w-5 h-5 text-white mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                      <Wallet className="w-5 h-5 text-white" />
+                    </div>
                     <div>
-                      <h4 className="text-base font-medium text-white">Security Deposit</h4>
+                      <h4 className="text-base font-medium text-white mb-1">Security Deposit</h4>
                       <p className="text-sm text-gray-300">₹5,000 (refundable)</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <Shield className="w-5 h-5 text-white mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-white" />
+                    </div>
                     <div>
-                      <h4 className="text-base font-medium text-white">Insurance</h4>
+                      <h4 className="text-base font-medium text-white mb-1">Insurance</h4>
                       <p className="text-sm text-gray-300">Comprehensive insurance included</p>
                     </div>
                   </div>
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="reviews" className="mt-4 sm:mt-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Customer Reviews</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="flex-shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                        <Star className="w-5 h-5 text-yellow-400" />
-                      </div>
+            <TabsContent value="reviews" className="mt-5 sm:mt-6 animate-fadeIn">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-5 sm:p-6">
+                <h3 className="text-xl font-semibold text-white mb-4 sm:mb-5">Customer Reviews</h3>
+                <div className="space-y-5">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                      <Star className="w-6 h-6 text-yellow-400" />
                     </div>
                     <div>
-                      <div className="flex items-center space-x-1">
+                      <div className="flex items-center space-x-1 mb-1.5">
                         <Star className="w-4 h-4 text-yellow-400" />
                         <Star className="w-4 h-4 text-yellow-400" />
                         <Star className="w-4 h-4 text-yellow-400" />
                         <Star className="w-4 h-4 text-yellow-400" />
                         <Star className="w-4 h-4 text-yellow-400" />
                       </div>
-                      <p className="text-sm text-gray-300 mt-1">"Excellent service and the car was in perfect condition. Will definitely rent again!"</p>
+                      <p className="text-base text-gray-300">"Excellent service and the car was in perfect condition. Will definitely rent again!"</p>
+                      <p className="text-sm text-gray-400 mt-1">- John D., 2 weeks ago</p>
                     </div>
                   </div>
                 </div>
