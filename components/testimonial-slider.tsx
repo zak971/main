@@ -19,7 +19,7 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "John Doe",
+    name: "John ",
     role: "Business Traveler",
     location: "Delhi",
     rating: 5,

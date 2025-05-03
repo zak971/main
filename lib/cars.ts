@@ -1,4 +1,4 @@
-import type { CarType } from "@/types/car"
+import type { CarType, Review } from "@/types/car"
 
 // Mock data for cars
 const carsData: CarType[] = [
@@ -28,8 +28,25 @@ const carsData: CarType[] = [
       "Spare Tire",
       "GPS Navigation",
       "Reverse Camera"
+    ],
+    reviews: [
+      {
+        id: "r1-1",
+        rating: 5,
+        comment: "Excellent service and the car was in perfect condition. Will definitely rent again!",
+        userName: "John D.",
+        date: "2 weeks ago"
+      },
+      {
+        id: "r1-2",
+        rating: 4,
+        comment: "Very comfortable for our family trip. Great vehicle for Goa's roads.",
+        userName: "Priya S.",
+        date: "1 month ago"
+      }
     ]
   },
+
   {
     id: "2",
     name: "Maruti Swift Dzire",
@@ -54,15 +71,32 @@ const carsData: CarType[] = [
       "Music System",
       "First Aid Kit",
       "Spare Tire"
+    ],
+    reviews: [
+      {
+        id: "r2-1",
+        rating: 5,
+        comment: "Fuel efficient and perfect for city driving. Had a great experience.",
+        userName: "Rahul M.",
+        date: "3 weeks ago"
+      },
+      {
+        id: "r2-2",
+        rating: 4,
+        comment: "Comfortable and easy to drive around Goa. Good value for money.",
+        userName: "Sarah T.",
+        date: "2 months ago"
+      }
     ]
   },
+
   {
     id: "3",
     name: "Hyundai Creta",
     type: "SUV",
     carType: "SUV",
-    image: "/images/h-f.png",
-    images: ["/images/h-f.png"],
+    image: "/images/creta.jpg",
+    images: ["/images/creta.jpg"],
     price: 2800,
     seats: 5,
     transmission: "Automatic",
@@ -84,8 +118,25 @@ const carsData: CarType[] = [
       "GPS Navigation",
       "Reverse Camera",
       "Sunroof"
+    ],
+    reviews: [
+      {
+        id: "r3-1",
+        rating: 5,
+        comment: "Amazing SUV with all premium features. Made our trip very comfortable.",
+        userName: "Amit K.",
+        date: "1 week ago"
+      },
+      {
+        id: "r3-2",
+        rating: 5,
+        comment: "The car was spotless and drove beautifully. Highly recommend!",
+        userName: "Linda J.",
+        date: "3 weeks ago"
+      }
     ]
   },
+
   {
     id: "4",
     name: "Mahindra Thar",
@@ -98,20 +149,40 @@ const carsData: CarType[] = [
     transmission: "Manual",
     fuelType: "Diesel",
     featured: false,
+    reviews: [
+      {
+        id: "r4-1",
+        rating: 5,
+        comment: "Perfect for exploring off-road areas in Goa. Had a blast driving it!",
+        userName: "Vikram S.",
+        date: "1 month ago"
+      }
+    ]
   },
+
   {
     id: "5",
     name: "Honda City",
     type: "Sedan",
     carType: "Sedan",
-    image: "/images/f-f.png",
-    images: ["/images/f-f.png"],
+    image: "/images/hondc.png",
+    images: ["/images/hondc.png"],
     price: 2200,
     seats: 5,
     transmission: "Automatic",
     fuelType: "Petrol",
     featured: false,
+    reviews: [
+      {
+        id: "r5-1",
+        rating: 4,
+        comment: "Smooth drive and good condition. Ideal for city travel in Goa.",
+        userName: "Michael R.",
+        date: "2 months ago"
+      }
+    ]
   },
+
   {
     id: "6",
     name: "Maruti Ertiga",
@@ -124,6 +195,15 @@ const carsData: CarType[] = [
     transmission: "Manual",
     fuelType: "Petrol",
     featured: false,
+    reviews: [
+      {
+        id: "r6-1",
+        rating: 4,
+        comment: "Great family car with plenty of space for luggage. Good service.",
+        userName: "Deepak T.",
+        date: "3 weeks ago"
+      }
+    ]
   },
   {
     id: "7",
@@ -137,6 +217,15 @@ const carsData: CarType[] = [
     transmission: "Automatic",
     fuelType: "Diesel",
     featured: false,
+    reviews: [
+      {
+        id: "r7-1",
+        rating: 5,
+        comment: "Luxury SUV in excellent condition. Powerful and comfortable.",
+        userName: "Ramesh P.",
+        date: "1 month ago"
+      }
+    ]
   },
   {
     id: "8",
@@ -150,19 +239,37 @@ const carsData: CarType[] = [
     transmission: "Manual",
     fuelType: "Petrol",
     featured: false,
+    reviews: [
+      {
+        id: "r8-1",
+        rating: 4,
+        comment: "Compact SUV perfect for Goa's narrow roads. Overall good experience.",
+        userName: "Neha V.",
+        date: "2 weeks ago"
+      }
+    ]
   },
   {
     id: "9",
     name: "Kia Seltos",
     type: "SUV",
     carType: "SUV",
-    image: "/images/k-f.png",
-    images: ["/images/k-f.png"],
+    image: "/images/kia.png",
+    images: ["/images/kia.png"],
     price: 2300,
     seats: 5,
     transmission: "Automatic",
     fuelType: "Petrol",
     featured: false,
+    reviews: [
+      {
+        id: "r9-1",
+        rating: 5,
+        comment: "Modern SUV with great features. Made our trip very comfortable.",
+        userName: "Aditya G.",
+        date: "3 weeks ago"
+      }
+    ]
   },
 ]
 

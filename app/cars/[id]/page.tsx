@@ -165,7 +165,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
                     </div>
                     <div>
                       <h4 className="text-base font-medium text-white mb-1">Minimum Rental Period</h4>
-                      <p className="text-sm text-gray-300">24 hours</p>
+                      <p className="text-sm text-gray-300">24 hours(10am-10am)</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -193,22 +193,29 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-5 sm:p-6">
                 <h3 className="text-xl font-semibold text-white mb-4 sm:mb-5">Customer Reviews</h3>
                 <div className="space-y-5">
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                      <Star className="w-6 h-6 text-yellow-400" />
-                    </div>
-                    <div>
-                      <div className="flex items-center space-x-1 mb-1.5">
-                        <Star className="w-4 h-4 text-yellow-400" />
-                        <Star className="w-4 h-4 text-yellow-400" />
-                        <Star className="w-4 h-4 text-yellow-400" />
-                        <Star className="w-4 h-4 text-yellow-400" />
-                        <Star className="w-4 h-4 text-yellow-400" />
+                  {car.reviews && car.reviews.length > 0 ? (
+                    car.reviews.map((review) => (
+                      <div key={review.id} className="flex items-start space-x-4">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                          <Star className="w-6 h-6 text-yellow-400" />
+                        </div>
+                        <div>
+                          <div className="flex items-center space-x-1 mb-1.5">
+                            {[...Array(5)].map((_, i) => (
+                              <Star 
+                                key={i} 
+                                className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-600'}`} 
+                              />
+                            ))}
+                          </div>
+                          <p className="text-base text-gray-300">"{review.comment}"</p>
+                          <p className="text-sm text-gray-400 mt-1">- {review.userName}, {review.date}</p>
+                        </div>
                       </div>
-                      <p className="text-base text-gray-300">"Excellent service and the car was in perfect condition. Will definitely rent again!"</p>
-                      <p className="text-sm text-gray-400 mt-1">- John D., 2 weeks ago</p>
-                    </div>
-                  </div>
+                    ))
+                  ) : (
+                    <p className="text-gray-400">No reviews available for this car yet.</p>
+                  )}
                 </div>
               </div>
             </TabsContent>

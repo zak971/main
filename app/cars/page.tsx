@@ -1,15 +1,44 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import { CarCard } from "@/components/cars/car-card"
 import { getCars } from "@/lib/cars"
-import { Metadata } from "next"
 import Image from "next/image"
+import { Search } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import type { CarType } from "@/types/car"
 
-export const metadata: Metadata = {
-  title: "Our Fleet | Premium Car Rental Service",
-  description: "Explore our premium fleet of vehicles. From luxury sedans to spacious SUVs, find the perfect car for your journey.",
-}
+export default function CarsPage() {
+  const [searchQuery, setSearchQuery] = useState("")
+  const [cars, setCars] = useState<CarType[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-export default async function CarsPage() {
-  const cars = await getCars()
+  // Fetch cars data on component mount
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const carsData = await getCars()
+        setCars(carsData)
+        setIsLoading(false)
+      } catch (error) {
+        console.error("Error fetching cars:", error)
+        setIsLoading(false)
+      }
+    }
+    
+    fetchCars()
+  }, [])
+
+  // Filter cars based on search query
+  const filteredCars = cars.filter((car) => {
+    const query = searchQuery.toLowerCase().trim()
+    if (!query) return true // Show all cars if search is empty
+    
+    return (
+      car.name.toLowerCase().includes(query) || 
+      car.type.toLowerCase().includes(query)
+    )
+  })
 
   return (
     <div className="min-h-screen">
@@ -61,15 +90,56 @@ export default async function CarsPage() {
             <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-medium leading-relaxed">
               Choose from our carefully curated collection of luxury and premium vehicles, each designed to provide the ultimate driving experience.
             </p>
+            
+            {/* Search Filter */}
+            <div className="w-full max-w-lg mt-6 sm:mt-8">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <Search className="w-5 h-5 text-gray-400" />
+                </div>
+                <Input
+                  type="text"
+                  placeholder="Search by car name or type..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-400 py-6 focus:ring-2 focus:ring-orange-400/50 focus:border-orange-400/50 shadow-lg"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white"
+                    aria-label="Clear search"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Cars Grid - Optimized */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {cars.map((car) => (
-                <CarCard key={car.id} car={car} />
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-400"></div>
+              </div>
+            ) : filteredCars.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                {filteredCars.map((car) => (
+                  <CarCard key={car.id} car={car} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-xl text-gray-300">No cars found matching "{searchQuery}"</p>
+                <button 
+                  onClick={() => setSearchQuery("")}
+                  className="mt-4 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-colors"
+                >
+                  Clear Search
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>

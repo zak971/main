@@ -104,7 +104,7 @@ export function Footer() {
                 <li className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-neutral-300 mt-1" />
                   <span className="text-neutral-300">
-                    123 Beach Road, Calangute, North Goa, 403516
+                    Fatorda, Margao South Goa, 403602
                   </span>
                 </li>
                 <li className="flex items-start space-x-3">
@@ -138,11 +138,11 @@ export function Footer() {
                 </li>
                 <li className="flex justify-between items-center">
                   <span className="text-neutral-300">Saturday:</span>
-                  <span className="text-white font-medium">9:00 AM - 7:00 PM</span>
+                  <span className="text-white font-medium">8:00 AM - 8:00 PM</span>
                 </li>
                 <li className="flex justify-between items-center">
                   <span className="text-neutral-300">Sunday:</span>
-                  <span className="text-white font-medium">10:00 AM - 6:00 PM</span>
+                  <span className="text-white font-medium">8:00 AM - 8:00 PM</span>
                 </li>
               </ul>
             </div>

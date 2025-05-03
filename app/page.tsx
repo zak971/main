@@ -31,7 +31,7 @@ export default function Home() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-white mb-4 sm:mb-6 leading-tight">
-                Your <span className="text-gray-300 italic">Trusted Fleet</span> for Every Journey
+                Your <span className="text-gray-300 italic">Trusted Fleet</span>  for Every Journey
               </h2>
 
               <p className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-normal leading-relaxed">
@@ -334,7 +334,7 @@ export default function Home() {
                 <div className="group relative bg-gradient-to-br from-black/50 via-neutral-900/50 to-neutral-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-neutral-700/50 transition-all duration-300 hover:border-neutral-600/50 hover:shadow-xl hover:-translate-y-1 p-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10 text-center">
-                    <div className="text-4xl sm:text-5xl font-bold text-white mb-2">500+</div>
+                    <div className="text-4xl sm:text-5xl font-bold text-white mb-2">100+</div>
                     <div className="text-lg text-neutral-300">Happy Customers</div>
                   </div>
                 </div>
@@ -399,7 +399,7 @@ export default function Home() {
                           </div>
                           <div className="ml-6">
                             <p className="text-lg font-semibold text-white mb-1">Address</p>
-                            <p className="text-lg text-neutral-300">123 Beach Road, Calangute, North Goa, 403516</p>
+                            <p className="text-lg text-neutral-300">Fatorda, Margao, South Goa, 403602</p>
                           </div>
                         </div>
 
@@ -452,26 +452,7 @@ export default function Home() {
                   </div>
 
                   {/* Business Hours Card */}
-                  <div className="group relative bg-gradient-to-br from-black/50 via-neutral-900/50 to-neutral-800/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-neutral-700/50 transition-all duration-300 hover:border-neutral-600/50 hover:shadow-xl hover:-translate-y-1 p-8">
-                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative z-10">
-                      <h3 className="text-2xl font-bold text-white mb-8">Business Hours</h3>
-                      <div className="space-y-6">
-                        <div className="flex justify-between items-center group/item">
-                          <span className="text-lg text-neutral-300">Monday - Friday:</span>
-                          <span className="text-lg font-semibold text-white">8:00 AM - 8:00 PM</span>
-                        </div>
-                        <div className="flex justify-between items-center group/item">
-                          <span className="text-lg text-neutral-300">Saturday:</span>
-                          <span className="text-lg font-semibold text-white">9:00 AM - 7:00 PM</span>
-                        </div>
-                        <div className="flex justify-between items-center group/item">
-                          <span className="text-lg text-neutral-300">Sunday:</span>
-                          <span className="text-lg font-semibold text-white">10:00 AM - 6:00 PM</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
 
                 {/* Right Column - Contact Form */}
@@ -534,7 +515,7 @@ export default function Home() {
                 <div className="group relative bg-gradient-to-br from-black/50 via-neutral-900/50 to-neutral-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-neutral-700/50 transition-all duration-300 hover:border-neutral-600/50 hover:shadow-xl hover:-translate-y-1 p-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10 text-center">
-                    <div className="text-4xl sm:text-5xl font-bold text-white mb-2">500+</div>
+                    <div className="text-4xl sm:text-5xl font-bold text-white mb-2">100+</div>
                     <div className="text-lg text-neutral-300">Happy Customers</div>
                   </div>
                 </div>
@@ -542,7 +523,7 @@ export default function Home() {
                 <div className="group relative bg-gradient-to-br from-black/50 via-neutral-900/50 to-neutral-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-neutral-700/50 transition-all duration-300 hover:border-neutral-600/50 hover:shadow-xl hover:-translate-y-1 p-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative z-10 text-center">
-                    <div className="text-4xl sm:text-5xl font-bold text-white mb-2">15+</div>
+                    <div className="text-4xl sm:text-5xl font-bold text-white mb-2">50+</div>
                     <div className="text-lg text-neutral-300">Car Models</div>
                   </div>
                 </div>
