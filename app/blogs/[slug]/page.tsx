@@ -28,6 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: "The requested blog post could not be found.",
     };
   }
+
+  // Use the blog index to pick a different hero image for each blog
+  const blogIndex = parseInt(blog.id);
+  const heroImage = `/images/hero${blogIndex}.jpg`;
   
   return {
     title: `${blog.title} | Goa Car Rental Blog`,
@@ -40,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: blog.excerpt,
       type: 'article',
       publishedTime: blog.publishedAt,
-      images: [{ url: blog.coverImage, width: 1200, height: 630, alt: blog.title }],
+      images: [{ url: heroImage, width: 1200, height: 630, alt: blog.title }],
     },
   };
 }
@@ -53,12 +57,16 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     notFound();
   }
 
+  // Use the blog index to pick a different hero image for each blog, same as blog-card
+  const blogIndex = parseInt(blog.id);
+  const heroImage = `/images/hero${blogIndex}.jpg`;
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] w-full">
         <Image
-          src={blog.coverImage || "/images/front.jpg"}
+          src={heroImage}
           alt={blog.title}
           fill
           className="object-cover"

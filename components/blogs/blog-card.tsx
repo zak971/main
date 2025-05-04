@@ -8,6 +8,10 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ blog }: BlogCardProps) {
+  // Use the blog index to pick a different hero image for each blog
+  const blogIndex = parseInt(blog.id);
+  const heroImage = `/images/hero${blogIndex}.jpg`;
+
   return (
     <Link 
       href={`/blogs/${blog.slug}`}
@@ -16,7 +20,7 @@ export function BlogCard({ blog }: BlogCardProps) {
       {/* Image Container */}
       <div className="relative h-48 w-full overflow-hidden">
         <Image
-          src="/images/front.jpg"
+          src={heroImage}
           alt={blog.title}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-110"
