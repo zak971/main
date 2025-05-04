@@ -29,6 +29,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Goa Car Rentals",
   description: "Premium car rental service in Goa",
+  metadataBase: new URL('https://goacarrental.in'),
   alternates: {
     canonical: "https://goacarrental.in",
   },
