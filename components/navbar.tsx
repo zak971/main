@@ -38,6 +38,7 @@ export function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/cars", label: "Our Cars" },
+    { href: "/blogs", label: "Blogs" },
     { href: "/#about", label: "About Us" },
     { href: "/#contact", label: "Contact" },
   ]

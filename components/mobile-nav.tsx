@@ -99,6 +99,14 @@ export function MobileNav() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
+                href="/blogs"
+                className="text-white hover:text-orange-500 transition-all duration-300 text-lg font-semibold group relative"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="relative z-10">Blogs</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+              <Link
                 href="/#about"
                 className="text-white hover:text-orange-500 transition-all duration-300 text-lg font-semibold group relative"
                 onClick={() => setIsOpen(false)}
