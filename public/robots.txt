@@ -1,0 +1,9 @@
+# https://goacarrental.in robots.txt
+User-agent: *
+Allow: /
+
+# Disallow admin area
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://goacarrental.in/sitemap.xml 

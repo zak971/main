@@ -9,6 +9,7 @@ import { Navbar } from "@/components/navbar"
 import { MobileNav } from "@/components/mobile-nav"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
+import { LocalBusinessSchema } from "@/components/structured-data"
 
 // Optimize font loading
 const inter = Inter({ 
@@ -28,6 +29,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Goa Car Rentals",
   description: "Premium car rental service in Goa",
+  alternates: {
+    canonical: "https://goacarrental.in",
+  },
   icons: {
     icon: "/images/logo.png",
     shortcut: "/images/logo.png",
@@ -52,6 +56,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
           <Analytics />
+          <LocalBusinessSchema />
         </ThemeProvider>
       </body>
     </html>

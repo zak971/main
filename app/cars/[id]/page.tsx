@@ -1,11 +1,39 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Car, Users, Fuel, Settings, Check, Phone, PhoneIcon as WhatsApp, ArrowLeft, Clock, Wallet, Shield, Star } from "lucide-react"
+import type { Metadata } from "next"
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getCar } from "@/lib/cars"
 import { CarImageCarousel } from "@/components/car-image-carousel"
+import { CarSchema } from "@/components/structured-data"
+
+// Generate dynamic metadata for each car page
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const car = await getCar(id);
+  
+  if (!car) {
+    return {
+      title: "Car Not Found",
+      description: "The requested car could not be found.",
+    };
+  }
+  
+  return {
+    title: `${car.name} - Rent in Goa | Self-Drive Car Rental`,
+    description: car.description || `Rent the ${car.name} in Goa. ${car.seats} seater, ${car.transmission} transmission, ${car.fuelType} engine. Book now for the best rates!`,
+    alternates: {
+      canonical: `https://goacarrental.in/cars/${id}`,
+    },
+    openGraph: {
+      title: `${car.name} - Premium Car Rental in Goa`,
+      description: car.description || `Rent the ${car.name} in Goa. ${car.seats} seater, ${car.transmission} transmission, ${car.fuelType} engine. Book now for the best rates!`,
+      images: [{ url: car.image || '/images/car-placeholder.jpg', width: 1200, height: 630, alt: car.name }],
+    },
+  };
+}
 
 export default async function CarDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -17,6 +45,9 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
 
   return (
     <div className="min-h-screen relative">
+      {/* Add Structured Data */}
+      <CarSchema car={car} />
+      
       {/* Background Layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-neutral-900 to-neutral-800">
         <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10 mix-blend-overlay" />

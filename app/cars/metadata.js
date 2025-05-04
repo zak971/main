@@ -1,4 +1,4 @@
 export const metadata = {
-  title: "Our Fleet | Premium Car Rental Service",
-  description: "Explore our premium fleet of vehicles. From luxury sedans to spacious SUVs, find the perfect car for your journey.",
+  title: "Car Rental in Goa | Self-Drive Cars at Best Rates",
+  description: "GoaCarRental.in offers reliable self-drive car rental in Goa. Pick your car and book online instantly. Easy, affordable, convenient!",
 } 

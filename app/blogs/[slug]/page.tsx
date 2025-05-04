@@ -1,53 +1,56 @@
-"use client"
-
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { CalendarDays, Clock, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { getBlogBySlug } from "@/lib/blogs"
-import { notFound, useParams } from "next/navigation"
+import { getBlogBySlug, getBlogs } from "@/lib/blogs"
+import { notFound } from "next/navigation"
 import type { BlogType } from "@/types/blog"
 import { BlogContent } from "@/components/blogs/blog-content"
 import { formatDate } from "@/lib/utils"
+import type { Metadata } from "next"
 
-export default function Page() {
-  const params = useParams()
-  const [blog, setBlog] = useState<BlogType | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+// Generate static params for all blog posts
+export async function generateStaticParams() {
+  const blogs = await getBlogs();
+  return blogs.map((blog: BlogType) => ({
+    slug: blog.slug,
+  }));
+}
 
-  useEffect(() => {
-    async function loadBlog() {
-      if (params && params.slug) {
-        const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug
-        try {
-          const data = await getBlogBySlug(slug)
-          if (data) {
-            setBlog(data)
-          } else {
-            notFound()
-          }
-        } catch (error) {
-          console.error("Error loading blog:", error)
-        } finally {
-          setIsLoading(false)
-        }
-      }
-    }
-
-    loadBlog()
-  }, [params])
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-black via-neutral-900 to-neutral-800">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-400"></div>
-      </div>
-    )
+// Generate dynamic metadata for each blog post
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
+  
+  if (!blog) {
+    return {
+      title: "Blog Not Found",
+      description: "The requested blog post could not be found.",
+    };
   }
+  
+  return {
+    title: `${blog.title} | Goa Car Rental Blog`,
+    description: blog.excerpt,
+    alternates: {
+      canonical: `https://goacarrental.in/blogs/${slug}`,
+    },
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      type: 'article',
+      publishedTime: blog.publishedAt,
+      images: [{ url: blog.coverImage, width: 1200, height: 630, alt: blog.title }],
+    },
+  };
+}
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
-    return notFound()
+    notFound();
   }
 
   return (
@@ -55,7 +58,7 @@ export default function Page() {
       {/* Hero Section */}
       <div className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] w-full">
         <Image
-          src="/images/front.jpg" // Using a placeholder image
+          src={blog.coverImage || "/images/front.jpg"}
           alt={blog.title}
           fill
           className="object-cover"
