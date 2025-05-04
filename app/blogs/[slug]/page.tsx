@@ -82,7 +82,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             variant="outline" 
             size="sm" 
             asChild
-            className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50 hover:text-orange-400 transition-all"
+            className="bg-black/30 backdrop-blur-sm border-white/10 text-gray-200 hover:bg-black/50 hover:text-orange-400 transition-all"
           >
             <Link href="/blogs" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
@@ -130,9 +130,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 <Button 
                   variant="outline" 
                   asChild
-                  className="bg-white/5 backdrop-blur-sm border-white/20 text-white hover:bg-white/10 hover:text-orange-400 hover:border-orange-400/30 transition-all"
+                  className="bg-black/30 backdrop-blur-sm border-white/10 text-gray-200 hover:bg-black/50 hover:text-orange-400 hover:border-orange-400/30 transition-all w-full sm:w-auto py-2.5 sm:py-2"
                 >
-                  <Link href="/blogs" className="flex items-center gap-2">
+                  <Link href="/blogs" className="flex items-center justify-center sm:justify-start gap-2">
                     <ArrowLeft className="h-4 w-4" />
                     <span>Back to All Articles</span>
                   </Link>
