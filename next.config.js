@@ -21,6 +21,16 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  async redirects() {
+    return [
+      {
+        source: '/(.*)',
+        has: [{ type: 'host', value: 'goacarrental.in' }],
+        destination: 'https://www.goacarrental.in/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig 
