@@ -29,14 +29,25 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Goa Car Rentals",
   description: "Premium car rental service in Goa",
-  metadataBase: new URL('https://goacarrental.in'),
+  metadataBase: process.env.NODE_ENV === 'development' 
+    ? new URL('http://localhost:3000') 
+    : new URL('https://goacarrental.in'),
   alternates: {
     canonical: "https://goacarrental.in",
   },
   icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" }
+    ]
   },
 }
 
@@ -47,6 +58,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider>
           <Navbar />

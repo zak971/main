@@ -61,9 +61,9 @@ export function LocalBusinessSchema({
   reviewCount = 150,
   priceRange = '₹₹-₹₹₹'
 }: LocalBusinessSchemaProps) {
-  const schemaData = {
+  const businessData = {
     '@context': 'https://schema.org',
-    '@type': 'CarRental',
+    '@type': 'LocalBusiness',
     name,
     description,
     telephone,
@@ -82,12 +82,6 @@ export function LocalBusinessSchema({
       latitude,
       longitude
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue,
-      reviewCount,
-      bestRating: 5
-    },
     priceRange,
     openingHoursSpecification: [
       {
@@ -101,11 +95,31 @@ export function LocalBusinessSchema({
     ]
   }
 
+  // Separate rating schema with proper itemReviewed reference
+  const ratingData = {
+    '@context': 'https://schema.org',
+    '@type': 'AggregateRating',
+    itemReviewed: {
+      '@type': 'LocalBusiness',
+      name,
+      description
+    },
+    ratingValue,
+    reviewCount,
+    bestRating: 5
+  }
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ratingData) }}
+      />
+    </>
   )
 }
 

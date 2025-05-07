@@ -1,227 +1,165 @@
 "use client"
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { Loader2, Send, User, Mail, Phone, MessageSquare } from "lucide-react"
-
+import { useState, useEffect } from "react"
+import emailjs from "@emailjs/browser"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/components/ui/use-toast"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  phone: z.string().min(10, { message: "Please enter a valid phone number." }),
-  carType: z.string().optional(),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-})
-
-type FormValues = z.infer<typeof formSchema>
-
-interface FormError {
-  message: string
-  field?: string
-}
-
-export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const { toast } = useToast()
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      carType: "",
-      message: "",
-    },
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
   })
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const handleSubmit = async (data: FormValues) => {
-    setIsSubmitting(true)
+  // Initialize EmailJS
+  useEffect(() => {
+    try {
+      emailjs.init("IEcd1dEr2NXi9UByb")
+      console.log("EmailJS initialized successfully")
+    } catch (error) {
+      console.error("Failed to initialize EmailJS:", error)
+      setErrorMessage("Failed to initialize email service")
+    }
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus("sending")
+    setErrorMessage("")
 
     try {
-      // Format the message for WhatsApp
-      const whatsappMessage = `
-*New Car Rental Inquiry*
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-Interested In: ${data.carType || "Not specified"}
-Message: ${data.message}
-      `.trim()
+      // Validate form data
+      if (!formData.name || !formData.email || !formData.message) {
+        throw new Error("Please fill in all fields")
+      }
 
-      // Encode the message for URL
-      const encodedMessage = encodeURIComponent(whatsappMessage)
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(formData.email)) {
+        throw new Error("Please enter a valid email address")
+      }
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: "zakriya",
+      }
+
+      console.log("Attempting to send email with params:", templateParams)
+
+      // First, verify the service and template IDs
+      console.log("Using Service ID:", "service_pcgshdk")
+      console.log("Using Template ID:", "template_mna8ohm")
+
+      const result = await emailjs.send(
+        "service_pcgshdk",
+        "template_mna8ohm",
+        templateParams
+      )
       
-      // WhatsApp number - replace with your actual business WhatsApp number
-      const whatsappNumber = "919307055218" // Format: country code without + followed by number
-      
-      // Create WhatsApp URL
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
-      
-      // Open WhatsApp in a new tab
-      window.open(whatsappUrl, "_blank")
-      
-      // Show success message
-      toast({
-        title: "Message Sent!",
-        description: "Your inquiry has been sent via WhatsApp. We'll get back to you as soon as possible.",
+      console.log("EmailJS response:", result)
+
+      if (result.text === "OK") {
+        console.log("Email sent successfully")
+        setStatus("success")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        console.error("EmailJS returned non-OK status:", result.text)
+        throw new Error(result.text || "Failed to send email")
+      }
+    } catch (error) {
+      console.error("Detailed error information:", {
+        error,
+        message: error instanceof Error ? error.message : "Unknown error",
+        stack: error instanceof Error ? error.stack : undefined
       })
-      
-      // Reset the form
-      form.reset()
-    } catch (error: unknown) {
-      const formError = error as FormError
-      console.error("Form submission error:", formError)
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later."
-      })
-    } finally {
-      setIsSubmitting(false)
+      setStatus("error")
+      setErrorMessage(
+        error instanceof Error 
+          ? `Error: ${error.message}` 
+          : "Failed to send message. Please try again."
+      )
     }
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
+
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-5">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white font-medium flex items-center gap-2">
-                <User className="w-4 h-4 text-neutral-400" />
-                <span>Full Name</span>
-              </FormLabel>
-              <FormControl>
-                <Input 
-                  placeholder="John Doe" 
-                  {...field} 
-                  className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500"
-                />
-              </FormControl>
-              <FormMessage className="text-orange-400" />
-            </FormItem>
-          )}
-        />
-
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-white font-medium flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-neutral-400" />
-                  <span>Email</span>
-                </FormLabel>
-                <FormControl>
-                  <Input 
-                    type="email" 
-                    placeholder="john@example.com" 
-                    {...field}
-                    className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500"
-                  />
-                </FormControl>
-                <FormMessage className="text-orange-400" />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-white font-medium flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-neutral-400" />
-                  <span>Phone Number</span>
-                </FormLabel>
-                <FormControl>
-                  <Input 
-                    placeholder="+91 98765 43210" 
-                    {...field}
-                    className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500"
-                  />
-                </FormControl>
-                <FormMessage className="text-orange-400" />
-              </FormItem>
-            )}
+    <div className="max-w-md mx-auto p-6 bg-neutral-900/95 rounded-xl border border-neutral-700/80">
+      <h2 className="text-2xl font-semibold text-white mb-6 text-center">Contact Us</h2>
+      
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-neutral-200 mb-1">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 bg-neutral-800/50 border border-neutral-700/50 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-600"
+            placeholder="Your name"
           />
         </div>
 
-        <FormField
-          control={form.control}
-          name="carType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white font-medium">Interested In</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="bg-neutral-800/50 border-neutral-700 text-white focus:ring-orange-500">
-                    <SelectValue placeholder="Select car type" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent className="bg-neutral-800 border-neutral-700 text-white">
-                  <SelectItem value="SUV" className="hover:bg-neutral-700 focus:bg-neutral-700">SUV</SelectItem>
-                  <SelectItem value="Sedan" className="hover:bg-neutral-700 focus:bg-neutral-700">Sedan</SelectItem>
-                  <SelectItem value="MPV" className="hover:bg-neutral-700 focus:bg-neutral-700">MPV</SelectItem>
-                  <SelectItem value="Luxury" className="hover:bg-neutral-700 focus:bg-neutral-700">Luxury</SelectItem>
-                  <SelectItem value="Economy" className="hover:bg-neutral-700 focus:bg-neutral-700">Economy</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage className="text-orange-400" />
-            </FormItem>
-          )}
-        />
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-neutral-200 mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 bg-neutral-800/50 border border-neutral-700/50 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-600"
+            placeholder="your@email.com"
+          />
+        </div>
 
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white font-medium flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-neutral-400" />
-                <span>Message</span>
-              </FormLabel>
-              <FormControl>
-                <Textarea 
-                  placeholder="Tell us about your requirements, travel dates, etc..." 
-                  className="min-h-[120px] bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus-visible:ring-orange-500 focus-visible:border-orange-500" 
-                  {...field} 
-                />
-              </FormControl>
-              <FormMessage className="text-orange-400" />
-            </FormItem>
-          )}
-        />
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-neutral-200 mb-1">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={4}
+            className="w-full px-4 py-2 bg-neutral-800/50 border border-neutral-700/50 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-600"
+            placeholder="Your message..."
+          />
+        </div>
 
-        <Button 
-          type="submit" 
-          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-medium py-6 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" 
-          disabled={isSubmitting}
+        <Button
+          type="submit"
+          disabled={status === "sending"}
+          className="w-full bg-neutral-800 hover:bg-neutral-700 text-white py-2 rounded-lg transition-colors"
         >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-              Sending...
-            </>
-          ) : (
-            <>
-              <Send className="w-5 h-5 mr-2" />
-              Send Message
-            </>
-          )}
+          {status === "sending" ? "Sending..." : "Send Message"}
         </Button>
+
+        {status === "success" && (
+          <p className="text-green-400 text-sm text-center">Message sent successfully!</p>
+        )}
+        {status === "error" && (
+          <p className="text-red-400 text-sm text-center">{errorMessage}</p>
+        )}
       </form>
-    </Form>
+    </div>
   )
 }

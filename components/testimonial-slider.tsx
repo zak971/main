@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 type Testimonial = {
@@ -16,10 +16,11 @@ type Testimonial = {
   date?: string
 }
 
+// Added more testimonials to demonstrate pagination
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "John ",
+    name: "John",
     role: "Business Traveler",
     location: "Delhi",
     rating: 5,
@@ -46,138 +47,259 @@ const testimonials: Testimonial[] = [
     image: "/images/about.jpg",
     text: "Perfect vehicle for our family road trip across Goa. Spacious and clean!",
     date: "2 months ago"
+  },
+  {
+    id: 4,
+    name: "Priya Sharma",
+    role: "Solo Traveler",
+    location: "Bangalore",
+    rating: 5,
+    image: "/images/friend.jpg",
+    text: "The car was in perfect condition and the service was top-notch. Highly recommend!",
+    date: "1 month ago"
+  },
+  {
+    id: 5,
+    name: "Robert Chen",
+    role: "Honeymoon Trip",
+    location: "Singapore",
+    rating: 5,
+    image: "/images/men.jpg",
+    text: "Made our honeymoon in Goa special. The car was luxurious and delivery was on time.",
+    date: "3 months ago"
+  },
+  {
+    id: 6,
+    name: "Aditya Patel",
+    role: "Local Resident",
+    location: "Goa",
+    rating: 4,
+    image: "/images/about.jpg",
+    text: "Even as a local, I prefer their rentals when I need a car. Reliable and professional.",
+    date: "2 weeks ago"
+  },
+  {
+    id: 7,
+    name: "Emma Wilson",
+    role: "Corporate Event",
+    location: "Australia",
+    rating: 5,
+    image: "/images/friend.jpg",
+    text: "Arranged multiple cars for our corporate retreat. The service was impeccable.",
+    date: "1 month ago"
+  },
+  {
+    id: 8,
+    name: "Raj Malhotra",
+    role: "Weekend Getaway",
+    location: "Pune",
+    rating: 5,
+    image: "/images/men.jpg",
+    text: "Quick booking, clean car, and transparent pricing. Will rent again!",
+    date: "3 weeks ago"
+  },
+  {
+    id: 9,
+    name: "Liu Yang",
+    role: "International Tourist",
+    location: "China",
+    rating: 4,
+    image: "/images/about.jpg",
+    text: "The WhatsApp booking made it so easy as a foreign visitor. Great experience!",
+    date: "2 months ago"
   }
 ]
 
 export default function TestimonialSlider() {
-  const [current, setCurrent] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  // Navigation functions
+  const handleNext = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setActiveIndex((current) => (current + 1) % testimonials.length);
+    setTimeout(() => setIsTransitioning(false), 700);
+  }, [isTransitioning]);
+  
+  const handlePrev = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setActiveIndex((current) => (current - 1 + testimonials.length) % testimonials.length);
+    setTimeout(() => setIsTransitioning(false), 700);
+  }, [isTransitioning]);
 
-  const next = useCallback(() => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrent((prev) => (prev + 1) % testimonials.length)
-    setTimeout(() => setIsTransitioning(false), 500)
-  }, [isTransitioning])
-
-  const prev = useCallback(() => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-    setTimeout(() => setIsTransitioning(false), 500)
-  }, [isTransitioning])
-
-  const goToSlide = useCallback((index: number) => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrent(index)
-    setTimeout(() => setIsTransitioning(false), 500)
-  }, [isTransitioning])
-
+  const handleDotClick = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
+  
+  // Auto-slide effect - but pause it on mobile to avoid disrupting user experience
   useEffect(() => {
-    if (isHovered || isTransitioning) return
-
+    // Only auto-play on larger screens
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+    
     const interval = setInterval(() => {
-      next()
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [next, isHovered, isTransitioning])
-
+      handleNext();
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [handleNext]);
+  
   return (
-    <div 
-      className="relative py-8 sm:py-12 bg-gradient-to-br from-black via-neutral-900 to-neutral-800 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative bg-gradient-to-br from-black via-neutral-900 to-neutral-800 backdrop-blur-sm rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-1">
-          <div className="relative h-[400px] overflow-hidden">
-            {testimonials.map((testimonial, idx) => (
-              <div
-                key={testimonial.id}
-                className={`absolute inset-0 transition-all duration-500 ease-in-out transform ${
-                  idx === current 
-                    ? "opacity-100 translate-x-0" 
-                    : idx < current 
-                      ? "-translate-x-full opacity-0" 
-                      : "translate-x-full opacity-0"
-                }`}
-              >
-                <div className="flex flex-col md:flex-row items-center justify-center gap-6 h-full px-4 sm:px-6">
-                  <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-neutral-700 shadow-lg">
-                    <Image 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      width={128}
-                      height={128}
-                      className="object-cover"
-                      priority={idx === current}
-                    />
-                  </div>
-                  <div className="text-center md:text-left max-w-xl">
-                    <p className="text-neutral-300 text-lg italic mb-4">
-                      "{testimonial.text}"
-                    </p>
-                    <div>
-                      <h3 className="text-white font-semibold text-lg">{testimonial.name}</h3>
-                      <p className="text-neutral-400 text-sm">{testimonial.role} — {testimonial.location}</p>
-                      <div className="flex justify-center md:justify-start mt-2">
+    <div className="max-w-6xl mx-auto pb-0">
+      {/* Mobile Navigation Dots - visible only on small screens */}
+      
+      
+      {/* Testimonial Slider - optimized for mobile */}
+      <div className="relative overflow-hidden px-1 sm:px-2 md:px-8 mb-0">
+        <div className="relative h-[340px] sm:h-[320px] md:h-[300px]">
+          {/* Center track - provides reference positioning */}
+          <div className="absolute top-0 left-0 right-0 h-full flex items-center justify-center">
+            {/* Testimonial Cards */}
+            {testimonials.map((testimonial, index) => {
+              // Calculate the position relative to active card
+              const distance = (index - activeIndex + testimonials.length) % testimonials.length;
+              // Normalize so we get values like -2, -1, 0, 1, 2 instead of large numbers
+              const normalizedDistance = distance > testimonials.length / 2 
+                ? distance - testimonials.length 
+                : distance;
+                
+              // Define the visual properties based on position - optimized for mobile
+              let opacity = 0;
+              let scale = 1;
+              let zIndex = 0;
+              let transform = "translateX(0)";
+              let brightness = 100;
+              let blur = "blur(0px)";
+              let pointerEvents: "none" | "auto" = "none";
+              
+              // Mobile-optimized positioning
+              switch(normalizedDistance) {
+                case -1: // Left
+                  opacity = 0.5;
+                  scale = 0.8;
+                  zIndex = 2;
+                  // Less offset on mobile
+                  transform = "translateX(-70%)";
+                  brightness = 85;
+                  break;
+                case 0: // Active/Center
+                  opacity = 1;
+                  scale = 1;
+                  zIndex = 3;
+                  transform = "translateX(0)";
+                  brightness = 100;
+                  pointerEvents = "auto";
+                  break;
+                case 1: // Right
+                  opacity = 0.5;
+                  scale = 0.8;
+                  zIndex = 2;
+                  // Less offset on mobile
+                  transform = "translateX(70%)";
+                  brightness = 85;
+                  break;
+                default:
+                  opacity = 0;
+                  scale = 0.5;
+                  zIndex = 0;
+                  break;
+              }
+              
+              // Only render visible testimonials (efficiency)
+              if (Math.abs(normalizedDistance) > 1) {
+                return null;
+              }
+              
+              // Custom styles for precise control
+              const cardStyle = {
+                opacity,
+                transform: `${transform} scale(${scale})`,
+                zIndex,
+                filter: `brightness(${brightness}%) ${blur}`,
+                pointerEvents
+              };
+              
+              return (
+                <div 
+                  key={testimonial.id}
+                  className="absolute top-0 left-0 right-0 mx-auto w-full max-w-[280px] sm:max-w-sm transform-gpu transition-all duration-700 ease-out"
+                  style={cardStyle}
+                >
+                  <div className="group relative bg-gradient-to-br from-black/95 via-neutral-900/95 to-neutral-800/95 backdrop-blur-lg rounded-xl sm:rounded-2xl overflow-hidden border border-neutral-700/80 transition-all duration-300 hover:border-neutral-600/90 hover:shadow-xl p-4 h-full">
+                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-300/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="relative z-10 h-full flex flex-col items-center text-center justify-center">
+                      {/* Quote icon */}
+                      <div className="absolute top-1 right-1 text-3xl text-neutral-700/50 font-serif">"</div>
+                      
+                      {/* Testimonial text */}
+                      <p className="text-neutral-100 text-sm sm:text-base mb-4 relative z-10 flex-grow font-medium">
+                        "{testimonial.text}"
+                      </p>
+                      
+                      {/* Rating */}
+                      <div className="flex mb-3 justify-center">
                         {[...Array(5)].map((_, i) => (
                           <Star 
                             key={i} 
-                            className={`w-4 h-4 ${i < testimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-neutral-600"}`} 
+                            className={`w-3 h-3 ${i < testimonial.rating ? "text-amber-400 fill-amber-400" : "text-neutral-500"}`} 
                           />
                         ))}
                       </div>
+                      
+                      {/* User info */}
+                      <div className="flex flex-col items-center">
+                        <div className="relative w-10 h-10 rounded-full overflow-hidden border border-neutral-500/80 mb-2 flex-shrink-0 shadow">
+                          <Image 
+                            src={testimonial.image} 
+                            alt={testimonial.name} 
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="text-center">
+                          <h3 className="text-white text-sm font-medium">{testimonial.name}</h3>
+                          <p className="text-neutral-200 text-xs">{testimonial.role} — {testimonial.location}</p>
+                        </div>
+                      </div>
+                      
+                      {/* Date */}
+                      <div className="mt-2 text-xs text-neutral-300">{testimonial.date}</div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Navigation */}
-          <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={prev}
-              disabled={isTransitioning}
-              className="w-8 h-8 sm:w-10 sm:h-10 bg-black/40 hover:bg-black/60 text-white rounded-full p-1 sm:p-2 backdrop-blur-sm border border-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={next}
-              disabled={isTransitioning}
-              className="w-8 h-8 sm:w-10 sm:h-10 bg-black/40 hover:bg-black/60 text-white rounded-full p-1 sm:p-2 backdrop-blur-sm border border-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Button>
-          </div>
-
-          {/* Dots */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden sm:flex space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                disabled={isTransitioning}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === current 
-                    ? "bg-white scale-110" 
-                    : "bg-neutral-600 hover:bg-neutral-500"
-                } disabled:opacity-50 disabled:cursor-not-allowed`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+              );
+            })}
           </div>
         </div>
+        
+        {/* Navigation Controls - Positioned for better mobile touch */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-1">
+          <Button
+            onClick={handlePrev}
+            variant="outline"
+            size="icon"
+            className="w-8 h-8 rounded-full bg-black/40 border border-neutral-700/50 text-white hover:bg-black/60 z-40 touch-manipulation"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            <span className="sr-only">Previous</span>
+          </Button>
+          
+          <Button
+            onClick={handleNext}
+            variant="outline"
+            size="icon"
+            className="w-8 h-8 rounded-full bg-black/40 border border-neutral-700/50 text-white hover:bg-black/60 z-40 touch-manipulation"
+          >
+            <ChevronRight className="h-4 w-4" />
+            <span className="sr-only">Next</span>
+          </Button>
+        </div>
       </div>
+      
+      {/* Empty space - minimal */}
+      <div className="flex justify-center"></div>
     </div>
   )
 }
